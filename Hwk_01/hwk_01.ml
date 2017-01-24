@@ -19,5 +19,8 @@ let frac_add (x,y) (a,b) =
   (x * b + y * a, y * b)
 
 let frac_simplify (x,y) =
-  let gcdnum = euclid x y in
-    (x / gcdnum, y / gcdnum)
+  if x = 0
+    then (x,y)
+    else
+      let gcdnum = euclid x y in
+        (x / gcdnum, y / gcdnum)
