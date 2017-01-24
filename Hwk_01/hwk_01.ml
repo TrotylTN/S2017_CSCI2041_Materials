@@ -54,12 +54,9 @@ let rec drop num alist =
   | (num, hd::tl) -> drop (num - 1) tl
 
 let rev alist =
-  let rec revfun thelist anslist =
-    match thelist with
-    | [] -> anslist
-    | hd::tl -> revfun tl (hd::anslist)
-  in
-    revfun alist []
+  match alist with
+  | [] -> []
+  | hd::tl -> (rev tl) @ [hd]
 
 let distance (x1,y1) (x2,y2) =
   let x_dis = x2 -. x1 in
@@ -76,3 +73,29 @@ let perimeter alist =
     match alist with
     | [] -> 0.
     | hd::tl -> calperimeter alist hd
+
+let is_matrix amatrix =
+  let rec linelen alist =
+    match alist with
+    | [] -> 0
+    | hd::tl -> 1 + linelen tl
+  in
+    match amatrix with
+    | [] -> true
+    | hdline::restline ->
+      let rec checkmatrix givenlen restline =
+        match restline with
+        | [] -> true
+        | hd::tl -> (linelen hd = givenlen) && checkmatrix givenlen tl
+      in
+        checkmatrix (linelen hdline) restline
+
+let rec matrix_scalar_add amatrix num =
+  let rec addnumtorow row aint =
+    match row with
+    | [] -> []
+    | hd::tl -> (hd + aint)::addnumtorow tl aint
+  in
+    match amatrix with
+    | [] -> []
+    | hd::tl -> (addnumtorow hd num)::(matrix_scalar_add tl num)
