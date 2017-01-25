@@ -53,7 +53,7 @@ let rec drop num alist =
   | (num, []) -> []
   | (num, hd::tl) -> drop (num - 1) tl
 
-let rev alist =
+let rec rev alist =
   match alist with
   | [] -> []
   | hd::tl -> (rev tl) @ [hd]
@@ -99,3 +99,29 @@ let rec matrix_scalar_add amatrix num =
     match amatrix with
     | [] -> []
     | hd::tl -> (addnumtorow hd num)::(matrix_scalar_add tl num)
+
+let rec matrix_transpose amatrix =
+  let frontelement rowele =
+    match rowele with
+    | [] -> 0
+    | hd::tl -> hd
+  in
+  let backelement rowele =
+    match rowele with
+    | [] -> []
+    | hd::tl -> tl
+  in
+  let rec gethead thematrix =
+    match thematrix with
+    | [] -> []
+    | hd::tl -> (frontelement hd)::(gethead tl)
+  in
+  let rec getback thematrix =
+    match thematrix with
+    | [] -> []
+    | hd::tl -> (backelement hd)::(getback tl)
+  in
+    match amatrix with
+    | [] -> []
+    | []::tl -> []
+    | hd::tl -> (gethead amatrix)::(matrix_transpose (getback amatrix))
