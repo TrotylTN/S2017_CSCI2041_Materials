@@ -125,3 +125,22 @@ let rec matrix_transpose amatrix =
     | [] -> []
     | []::tl -> []
     | hd::tl -> (gethead amatrix)::(matrix_transpose (getback amatrix))
+
+let rec matrix_multiply amatrix bmatrix =
+  let transmatrix = matrix_transpose bmatrix in
+    let rec timeselement alist blist =
+      match (alist, blist) with
+      | ([],[]) -> 0
+      | (_::_, []) -> 0
+      | ([], _::_) -> 0
+      | (ahd::atl,bhd::btl) ->
+        ahd * bhd + timeselement atl btl
+    in
+      let rec gothrubmatrix alist bmatrix =
+        match bmatrix with
+        | [] -> []
+        | hd::tl -> (timeselement alist hd)::gothrubmatrix alist tl
+      in
+        match amatrix with
+        | [] -> []
+        | hd::tl -> (gothrubmatrix hd transmatrix)::(matrix_multiply tl bmatrix)
