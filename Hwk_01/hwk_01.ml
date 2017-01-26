@@ -20,7 +20,7 @@ let frac_add (x,y) (a,b) =
 
 let frac_simplify (x,y) =
   if x = 0
-    then (x,y)
+    then (0,1)
     else
       let gcdnum = euclid x y in
         (x / gcdnum, y / gcdnum)
@@ -39,7 +39,7 @@ let square_approx n accuracy =
 
 let rec max_list alist =
   match alist with
-  | [] -> 0
+  | [] -> raise (Failure "Your list was empty")
   | hd::[] -> hd
   | hd::tl ->
     let rest_max = max_list tl in
@@ -103,7 +103,7 @@ let rec matrix_scalar_add amatrix num =
 let rec matrix_transpose amatrix =
   let frontelement rowele =
     match rowele with
-    | [] -> 0
+    | [] -> raise (Failure "frontelement")
     | hd::tl -> hd
   in
   let backelement rowele =
@@ -131,8 +131,8 @@ let rec matrix_multiply amatrix bmatrix =
     let rec timeselement alist blist =
       match (alist, blist) with
       | ([],[]) -> 0
-      | (_::_, []) -> 0
-      | ([], _::_) -> 0
+      | (_::_, []) -> raise (Failure "invalid matrix")
+      | ([], _::_) -> raise (Failure "invalid matrix")
       | (ahd::atl,bhd::btl) ->
         ahd * bhd + timeselement atl btl
     in
