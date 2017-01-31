@@ -1,6 +1,6 @@
 ### Feedback for Lab 03
 
-Run on January 31, 14:19:44 PM.
+Run on January 31, 15:17:04 PM.
 
 + Pass: Change into directory "Lab_03".
 
@@ -162,11 +162,14 @@ Run on January 31, 14:19:44 PM.
 
 
 
-+ Pass: Check that the result of evaluating `matrix_scalar_add [ [1; 2; 3]; [4; 5; 6] ] 5` matches the pattern `[ [6; 7; 8]; [9; 10; 11] ]`.
++ Fail: Check that the result of evaluating `matrix_scalar_add [ [1; 2; 3]; [4; 5; 6] ] 5` matches the pattern `[ [6; 7; 8]; [9; 10; 11] ]`.
 
    
 
-
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Incorrect input: input not a matrix".
+`
 
 #### Bonus Round!!
 
@@ -176,9 +179,12 @@ Run on January 31, 14:19:44 PM.
 
 
 
-+ Pass: Check that the result of evaluating `matrix_multiply  [ [1; 2; 3]; [4; 5; 6] ] [ [1; 4]; [2; 5]; [3; 6] ]` matches the pattern ` [ [14; 32]; [32; 77]]`.
++ Fail: Check that the result of evaluating `matrix_multiply  [ [1; 2; 3]; [4; 5; 6] ] [ [1; 4]; [2; 5]; [3; 6] ]` matches the pattern ` [ [14; 32]; [32; 77]]`.
 
    
 
-
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Incorrect input: input not a matrix".
+`
 
