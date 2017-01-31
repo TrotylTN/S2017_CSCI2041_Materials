@@ -8,16 +8,23 @@ let even n =
     else false
 
 let rec euclid a b =
-  if a = b
-    then a
-    else if a < b
-      then euclid a (b - a)
-      else euclid (a - b) b
+  if a > 0 && b > 0
+    then
+      if a = b
+        then a
+        else if a < b
+          then euclid a (b - a)
+          else euclid (a - b) b
+    else raise (Failure "Incorrect input: negative arguments")
 
 let frac_mul (x,y) (a,b) =
-  let ansx = x * a in
-    let ansy = y * b in
-      (ansx, ansy)
+  if y != 0 && b != 0
+    then
+      let ansx = x * a in
+        let ansy = y * b in
+          (ansx, ansy)
+    else
+      raise (Failure "Incorrect input: denominator is zero")
 
 let frac_add (x,y) (a,b) =
   (x * b + y * a, y * b)
@@ -62,47 +69,50 @@ let rec rev alist =
   | [] -> []
   | hd::tl -> (rev tl) @ [hd]
 
+(* Function distance was implemented by Henry Middleton *)
 let distance (x1,y1) (x2,y2) =
-  let x_dis = x2 -. x1 in
-    let y_dis = y2 -. y1 in
-      sqrt (x_dis *. x_dis +. y_dis *. y_dis)
+	sqrt( (x1-.x2)*.(x1-.x2) +. (y1-.y2)*.(y1-.y2) )
 
-let perimeter alist =
-  let rec calperimeter thelist firstarg =
-    match thelist with
-    | [] -> 0.
-    | hd::[] -> distance hd firstarg
-    | x1::(x2::tl) -> distance x1 x2 +. calperimeter (x2::tl) firstarg
-  in
-    match alist with
-    | [] -> 0.
-    | hd::tl -> calperimeter alist hd
+(* Function perimeter was implemented by Henry Middleton *)
+let perimeter points =
+	match points with
+	|[] -> 0.0
+	| x :: others -> let first = x in
+		let rec perhelper f p =
+			match p with
+			|[] -> 0.0
+			|x :: [] -> distance x first
+			|x :: y :: others -> distance x y +. perhelper f (y::others)
+		in perhelper first points
 
-let is_matrix amatrix =
-  let rec linelen alist =
-    match alist with
-    | [] -> 0
-    | hd::tl -> 1 + linelen tl
-  in
-    match amatrix with
-    | [] -> true
-    | hdline::restline ->
-      let rec checkmatrix givenlen restline =
-        match restline with
-        | [] -> true
-        | hd::tl -> (linelen hd = givenlen) && checkmatrix givenlen tl
-      in
-        checkmatrix (linelen hdline) restline
+(* Function length was implemented by Henry Middleton *)
+let rec length l =
+	match l with
+	| [] -> 0
+	| e :: others -> 1 + length others
 
-let rec matrix_scalar_add amatrix num =
-  let rec addnumtorow row aint =
-    match row with
-    | [] -> []
-    | hd::tl -> (hd + aint)::addnumtorow tl aint
-  in
-    match amatrix with
-    | [] -> []
-    | hd::tl -> (addnumtorow hd num)::(matrix_scalar_add tl num)
+(* Function is_matrix was implemented by Henry Middleton *)
+(* Modified the base case since the original one does not work for matrix with
+   just one line, such as [[1;2;3]] *)
+let rec is_matrix thing =
+	match thing with
+	|x :: [] -> true
+	|x :: y :: [] -> if ((length x) = (length y)) then true else false
+	|x :: y :: rest -> if ((length x) = (length y)) then is_matrix (y :: rest) else false
+	|_ -> false
+
+(* Function list_scalar_add was implemented by Henry Middleton *)
+let rec list_scalar_add l n =
+	match l with
+	| [] -> []
+	| x :: rest -> (x+n) :: (list_scalar_add rest n)
+
+(* Function matrix_scalar_add was implemented by Henry Middleton *)
+let rec matrix_scalar_add matrix num =
+	match matrix with
+	|[[]] -> [[]]
+	|x :: rest -> (list_scalar_add x num) :: (matrix_scalar_add rest num)
+	|[] -> []
 
 let rec matrix_transpose amatrix =
   let frontelement rowele =
