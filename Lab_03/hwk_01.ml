@@ -121,13 +121,16 @@ let rec list_scalar_add l n =
 	| x :: rest -> (x+n) :: (list_scalar_add rest n)
 
 (* Function matrix_scalar_add was implemented by Henry Middleton *)
-let rec matrix_scalar_add matrix num =
+let matrix_scalar_add matrix num =
   if is_matrix matrix
     then
-    	match matrix with
-    	|[[]] -> [[]]
-    	|x :: rest -> (list_scalar_add x num) :: (matrix_scalar_add rest num)
-    	|[] -> []
+      let rec matrix_scalar_add_help matrix num =
+  	    match matrix with
+    	  |[[]] -> [[]]
+    	  |x :: rest -> (list_scalar_add x num) :: (matrix_scalar_add_help rest num)
+    	  |[] -> []
+      in
+        matrix_scalar_add_help matrix num
     else
       raise (Failure "Incorrect input: input not a matrix")
 
@@ -162,25 +165,28 @@ let rec matrix_transpose amatrix =
       raise (Failure "Incorrect input: input not a matrix")
 
 
-let rec matrix_multiply amatrix bmatrix =
+let matrix_multiply amatrix bmatrix =
   if is_matrix amatrix && is_matrix bmatrix
     then
-      let transmatrix = matrix_transpose bmatrix in
-        let rec timeselement alist blist =
-          match (alist, blist) with
-          | ([],[]) -> 0
-          | (_::_, []) -> raise (Failure "invalid matrix")
-          | ([], _::_) -> raise (Failure "invalid matrix")
-          | (ahd::atl,bhd::btl) ->
-            ahd * bhd + timeselement atl btl
-        in
-          let rec gothrubmatrix alist bmatrix =
-            match bmatrix with
-            | [] -> []
-            | hd::tl -> (timeselement alist hd)::gothrubmatrix alist tl
+      let rec matrix_multiply_help amatrix bmatrix =
+        let transmatrix = matrix_transpose bmatrix in
+          let rec timeselement alist blist =
+            match (alist, blist) with
+            | ([],[]) -> 0
+            | (_::_, []) -> raise (Failure "invalid matrix")
+            | ([], _::_) -> raise (Failure "invalid matrix")
+            | (ahd::atl,bhd::btl) ->
+              ahd * bhd + timeselement atl btl
           in
-            match amatrix with
-            | [] -> []
-            | hd::tl -> (gothrubmatrix hd transmatrix)::(matrix_multiply tl bmatrix)
+            let rec gothrubmatrix alist bmatrix =
+              match bmatrix with
+              | [] -> []
+              | hd::tl -> (timeselement alist hd)::gothrubmatrix alist tl
+            in
+              match amatrix with
+              | [] -> []
+              | hd::tl -> (gothrubmatrix hd transmatrix)::(matrix_multiply_help tl bmatrix)
+      in
+        matrix_multiply_help amatrix bmatrix
     else
       raise (Failure "Incorrect input: input not a matrix")
