@@ -2,9 +2,13 @@
 
 Below are the automated scores for Homework 1.  If you feel that our scripts are incorrectly assessing your work then please email ``csci2041@cs.umn.edu`` and explain the problem.  If your code is right you will get credit for it - just maybe not right away.
 
-#### Total score: _97_ / _100_
+**Contains fix for rounding error!** Please email ``csci2041@cs.umn.edu`` if this reduces your score. Please note that this was ran on what was in your directory shortly after the due date on January 30th, 5PM.
 
-Run on January 30, 19:28:12 PM.
+#### Total score: _100_ / _100_
+
+Run on February 10, 19:28:31 PM.
+
+*Tests were ran on code present in this repository at January 30, 19:00:00 PM.*
 
 + Pass: Change into directory "Hwk_01".
 
@@ -70,30 +74,25 @@ Run on January 30, 19:28:12 PM.
 
 
 
-+  _3_ / _3_ : Pass: Check that the result of evaluating `fst (square_approx 9.2 0.001)` matches the pattern `3.0`.
++  _3_ / _3_ : Pass: Check that the result of evaluating `fst (square_approx 9.2 0.001)` is within 0.1 of `3.0`.
 
    
 
 
 
-+  _3_ / _3_ : Pass: Check that the result of evaluating `snd (square_approx 9.2 0.001)` matches the pattern `3.0`.
++  _3_ / _3_ : Pass: Check that the result of evaluating `snd (square_approx 9.2 0.001)` is within 0.1 of `3.0`.
 
    
 
 
 
-+  _0_ / _3_ : Fail: Check that the result of evaluating `fst (square_approx 81.2 0.1)` matches the pattern `9.0`.
++  _3_ / _3_ : Pass: Check that the result of evaluating `fst (square_approx 81.2 0.1)` is within 0.2 of `9.0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-- : float = 8.98867187500000142
-`
 
 
-+  _3_ / _3_ : Pass: Check that the result of evaluating `snd (square_approx 81.2 0.1)` matches the pattern `9.0`.
++  _3_ / _3_ : Pass: Check that the result of evaluating `snd (square_approx 81.2 0.1)` is within 0.2 of `9.0`.
 
    
 
@@ -209,5 +208,5 @@ Run on January 30, 19:28:12 PM.
 
 
 
-#### Total score: _97_ / _100_
+#### Total score: _100_ / _100_
 
