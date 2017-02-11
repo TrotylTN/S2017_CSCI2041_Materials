@@ -12,16 +12,16 @@ let rec drop n l = match l with
   | [] -> []
   | x::xs -> if n > 0 then drop (n-1) xs else l
 
-let length alist = List.length alist
+let length (alist: 'a list) : int = List.length alist
 
-let rev alist = List.rev alist
+let rev (alist: 'a list) : 'a list = List.rev alist
 
-let is_elem_by f n alist =
+let is_elem_by (f: 'a -> 'b -> bool) (n: 'b) (alist: 'a list) : bool =
   List.fold_left (fun p_ans t_num -> p_ans ||(f t_num n)) false alist
 
-let is_elem n alist = is_elem_by (=) n alist
+let is_elem (n: 'a) (alist: 'a list) : bool = is_elem_by (=) n alist
 
-let dedup alist =
+let dedup (alist: 'a list) : 'a list =
   let templist = List.sort (fun a b -> if a < b then -1 else 1) alist
   in
     let checksame cur_num pre_list =
@@ -29,6 +29,9 @@ let dedup alist =
       | hd :: restlist -> if hd = cur_num then pre_list else cur_num :: pre_list
       | [] -> [cur_num]
     in List.fold_right checksame templist []
+
+(* let split_by fop tlist olist =
+  let checkdot *)
 
 (* Some functions for reading files. *)
 let read_file (filename:string) : char list option =
