@@ -64,7 +64,16 @@ let read_file (filename:string) : char list option =
   with
     _ -> None
 
+type word = char list
+type line = word list
 
+let convert_to_non_blank_lines_of_words (textlist: char list) : line list =
+  let text_by_line = split_by (=) textlist ['\n'];
+  in
+    let appendlist cur_num pre_list =
+      let wordslist = split_by (=) cur_num [' '; '.'; '!'; '?'; ','; ';'; ':'; '-']
+      in wordslist :: pre_list
+    in List.fold_right appendlist text_by_line []
 
 
 type result = OK
