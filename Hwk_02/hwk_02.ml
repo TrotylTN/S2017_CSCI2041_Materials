@@ -67,12 +67,22 @@ let read_file (filename:string) : char list option =
 type word = char list
 type line = word list
 
+let convert_char_list_option_to_char_list (olist: char list option) : char list =
+  match olist with
+  | None -> raise (Failure "Error in reading file")
+  | Some alist -> alist
+
 let convert_to_non_blank_lines_of_words (textlist: char list) : line list =
   let text_by_line = split_by (=) textlist ['\n'];
   in
     let appendlist cur_num pre_list =
       let wordslist = split_by (=) cur_num [' '; '.'; '!'; '?'; ','; ';'; ':'; '-']
-      in wordslist :: pre_list
+      in
+        let checkempty cur_num pre_list =
+          if (cur_num = [])
+            then pre_list
+            else cur_num :: pre_list
+        in (List.fold_right checkempty wordslist []) :: pre_list
     in List.fold_right appendlist text_by_line []
 
 
