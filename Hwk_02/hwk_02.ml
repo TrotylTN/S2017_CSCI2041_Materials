@@ -30,7 +30,7 @@ let dedup (alist: 'a list) : 'a list =
       | [] -> [cur_num]
     in List.fold_right checksame templist []
 
-let split_by fop tlist olist =
+let split_by (fop: 'a -> 'a -> bool) (tlist: 'a list) (olist: 'a list) : 'a list list =
   let checkdot this_val dotlist = List.fold_left (fun p_ans t_num -> p_ans || fop this_val t_num) false dotlist
   in
     let appendlist cur_num pre_list =
