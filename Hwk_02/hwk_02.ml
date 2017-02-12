@@ -30,8 +30,22 @@ let dedup (alist: 'a list) : 'a list =
       | [] -> [cur_num]
     in List.fold_right checksame templist []
 
-(* let split_by fop tlist olist =
-  let checkdot *)
+let split_by fop tlist olist =
+  let checkdot this_val dotlist = List.fold_left (fun p_ans t_num -> p_ans || fop this_val t_num) false dotlist
+  in
+    let appendlist cur_num pre_list =
+      if checkdot cur_num olist
+        then
+          match pre_list with
+          | hd :: restlist -> [] :: pre_list
+          | [] -> [] :: []
+        else
+          match pre_list with
+          | hd :: restlist -> (cur_num :: hd) :: restlist
+          | [] -> [cur_num] :: pre_list
+    in
+      List.fold_right appendlist tlist []
+
 
 (* Some functions for reading files. *)
 let read_file (filename:string) : char list option =
