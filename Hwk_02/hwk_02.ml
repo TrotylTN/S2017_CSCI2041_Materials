@@ -101,7 +101,7 @@ let all_lowercase (a: line list) : line list =
     let low_line (l: line): line = List.fold_right (fun cur prl -> (low_word cur)::prl) l []
     in List.fold_right (fun cur prl -> (low_line cur)::prl) a []
 
-let paradelle (filename: string) : result =
+(* let paradelle (filename: string) : result =
   let filecontent = read_file (filename)
   in
     if filecontent = None
@@ -111,4 +111,4 @@ let paradelle (filename: string) : result =
       let a = delete_all_empty_line (convert_to_non_blank_lines_of_words (convert_char_ist_option_to_char_list filecontent))
       in
       let lower_content = all_lowercase a
-      in
+      in *)
