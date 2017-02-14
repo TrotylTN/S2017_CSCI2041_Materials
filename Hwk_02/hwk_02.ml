@@ -116,8 +116,8 @@ let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: lin
   in
     let ans2 =
       if l3 = l4
-      then ans1
-      else ans1 @ [(base_num + 3, base_num + 4)]
+        then ans1
+        else ans1 @ [(base_num + 3, base_num + 4)]
     in
       let tot_dict = dedup (l1 @ l2 @ l3 @ l4)
       in
