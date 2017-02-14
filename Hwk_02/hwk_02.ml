@@ -101,7 +101,10 @@ let all_lowercase (a: line list) : line list =
     let low_line (l: line): line = List.fold_right (fun cur prl -> (low_word cur)::prl) l []
     in List.fold_right (fun cur prl -> (low_line cur)::prl) a []
 
-(* let paradelle (filename: string) : result =
+let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: line) : result =
+
+
+let paradelle (filename: string) : result =
   let filecontent = read_file (filename)
   in
     if filecontent = None
@@ -111,4 +114,18 @@ let all_lowercase (a: line list) : line list =
       let a = delete_all_empty_line (convert_to_non_blank_lines_of_words (convert_char_ist_option_to_char_list filecontent))
       in
       let lower_content = all_lowercase a
-      in *)
+      in
+      if (length lower_content) != 24
+        then IncorrectNumLines (length lower_content)
+        else
+        match lower_content with
+        | a1::a2::a3::a4::a5::a6::restlines ->
+          (
+          let a_result = parse3stanza a1 a2 a3 a4 a5 a6
+          in
+          match restlines with
+          | b1::b2::b3::b4::b5::b6::brestlines ->
+          let b_result = parse3stanza b1 b2 b3 b4 b5 b6
+          | _ -> IncorrectNumLines (length lower_content)
+          )
+        | _ -> IncorrectNumLines (length lower_content)
