@@ -31,20 +31,20 @@ let dedup (alist: 'a list) : 'a list =
     in List.fold_right checksame templist []
 
 let split_by (fop: 'a -> 'a -> bool) (tlist: 'a list) (olist: 'a list) : 'a list list =
-  let checkdot this_val dotlist = List.fold_left (fun p_ans t_num -> p_ans || fop this_val t_num) false dotlist
+  let checkdot this_val dotlist = List.fold_left (fun p_ans t_num -> p_ans || fop t_num this_val) false dotlist
   in
     let appendlist cur_num pre_list =
       if checkdot cur_num olist
         then
           match pre_list with
           | hd :: restlist -> [] :: pre_list
-          | [] -> [] :: []
+          | [] -> [[]]
         else
           match pre_list with
           | hd :: restlist -> (cur_num :: hd) :: restlist
-          | [] -> [cur_num] :: pre_list
+          | [] -> [[]]
     in
-      List.fold_right appendlist tlist []
+      List.fold_right appendlist tlist [[]]
 
 
 (* Some functions for reading files. *)
