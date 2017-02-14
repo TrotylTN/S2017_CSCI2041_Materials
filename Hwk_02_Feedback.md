@@ -1,6 +1,6 @@
 ### Feedback for Homework 02
 
-Run on February 14, 14:16:34 PM.
+Run on February 14, 14:19:54 PM.
 
 + Pass: Change into directory "Hwk_02".
 
@@ -118,15 +118,10 @@ List.sort (fun x y -> if x < y then -1 else 1) (dedup [[13; 1]; [13; 1]; [1; 2];
 
 
 
-+ Fail: Check that the result of evaluating `split_by (>) ['a';'b';'c';'d'] ['c']` matches the pattern `[[]; []; ['c'; 'd']]`.
++ Pass: Check that the result of evaluating `split_by (>) ['a';'b';'c';'d'] ['c']` matches the pattern `[[]; []; ['c'; 'd']]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-- : char list list = [['a'; 'b'; 'c']]
-`
 
 
 + Pass: Check that the result of evaluating `split_by (=) ['a';'b';'c';'d'] []` matches the pattern `[['a'; 'b'; 'c'; 'd']]`.
@@ -135,25 +130,15 @@ List.sort (fun x y -> if x < y then -1 else 1) (dedup [[13; 1]; [13; 1]; [1; 2];
 
 
 
-+ Fail: Check that the result of evaluating `split_by (=) [] ['x']` matches the pattern `[[ ]]`.
++ Pass: Check that the result of evaluating `split_by (=) [] ['x']` matches the pattern `[[ ]]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-- : char list list = []
-`
 
 
-+ Fail: Check that the result of evaluating `split_by (=) [] []` matches the pattern `[[ ]]`.
++ Pass: Check that the result of evaluating `split_by (=) [] []` matches the pattern `[[ ]]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-- : 'a list list = []
-`
 
 
