@@ -101,8 +101,31 @@ let all_lowercase (a: line list) : line list =
     let low_line (l: line): line = List.fold_right (fun cur prl -> (low_word cur)::prl) l []
     in List.fold_right (fun cur prl -> (low_line cur)::prl) a []
 
-let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: line) : result =
+let parse_last_stanza (laststanza: line list) : word list =
+  let append_by_word cur_word pre_list = cur_word :: pre_list
+  in
+    let append_by_line curline pre_list = (List.fold_right append_by_word curline []) @ pre_list
+    in
+      dedup (List.fold_right append_by_line laststanza [])
 
+let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: line) (base_num: int) : (int * int) list =
+  let ans1 =
+    if l1 = l2
+      then []
+      else [(base_num + 1, base_num + 2)]
+  in
+    let ans2 =
+      if l3 = l4
+      then ans1
+      else ans1 @ [(base_num + 3, base_num + 4)]
+    in
+      let tot_dict = dedup (l1 @ l2 @ l3 @ l4)
+      in
+        if tot_dict = (parse_last_stanza ([l5;l6]))
+          then
+            ans2
+          else
+            ans2 @ [(base_num + 5, base_num + 6)]
 
 let paradelle (filename: string) : result =
   let filecontent = read_file (filename)
@@ -111,7 +134,7 @@ let paradelle (filename: string) : result =
       then
         FileNotFound filename
       else
-      let a = delete_all_empty_line (convert_to_non_blank_lines_of_words (convert_char_ist_option_to_char_list filecontent))
+      let a = delete_all_empty_line (convert_to_non_blank_lines_of_words (convert_char_list_option_to_char_list(filecontent)))
       in
       let lower_content = all_lowercase a
       in
@@ -121,11 +144,31 @@ let paradelle (filename: string) : result =
         match lower_content with
         | a1::a2::a3::a4::a5::a6::restlines ->
           (
-          let a_result = parse3stanza a1 a2 a3 a4 a5 a6
-          in
-          match restlines with
-          | b1::b2::b3::b4::b5::b6::brestlines ->
-          let b_result = parse3stanza b1 b2 b3 b4 b5 b6
-          | _ -> IncorrectNumLines (length lower_content)
+            let a_result = parse3stanza a1 a2 a3 a4 a5 a6 0
+            in
+            match restlines with
+            | b1::b2::b3::b4::b5::b6::brestlines ->
+            (
+              let b_result = a_result @ (parse3stanza b1 b2 b3 b4 b5 b6 6) in
+              match brestlines with
+              | c1::c2::c3::c4::c5::c6::laststanza ->
+              (
+                  let front_result = b_result @ (parse3stanza c1 c2 c3 c4 c5 c6 12) in
+                    if length front_result = 0
+                      then
+                        let tot_dic = dedup (a1 @ a2 @ a3 @ a4 @ a5 @ a6 @
+                                             b1 @ b2 @ b3 @ b4 @ b5 @ b6 @
+                                             c1 @ c2 @ c3 @ c4 @ c5 @ c6)
+                        in if (tot_dic = (parse_last_stanza laststanza))
+                          then
+                            OK
+                          else
+                            IncorrectLastStanza
+                      else
+                        IncorrectLines (front_result)
+              )
+              | _ -> IncorrectNumLines (length lower_content)
+            )
+            | _ -> IncorrectNumLines (length lower_content)
           )
         | _ -> IncorrectNumLines (length lower_content)
