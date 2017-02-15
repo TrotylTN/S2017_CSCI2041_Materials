@@ -122,13 +122,17 @@ let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: lin
         then ans1
         else ans1 @ [(base_num + 3, base_num + 4)]
     in
-      let tot_dict = only_sort(l1 @ l3)
-      in
-        if tot_dict = (only_sort (l5 @ l6))
-          then
-            ans2
-          else
-            ans2 @ [(base_num + 5, base_num + 6)]
+      if ans2 != []
+        then
+          ans2
+        else
+          let tot_dict = only_sort (l1 @ l3)
+          in
+            if tot_dict = (only_sort (l5 @ l6))
+              then
+                ans2
+              else
+                ans2 @ [(base_num + 5, base_num + 6)]
 
 let paradelle (filename: string) : result =
   let filecontent = read_file (filename)
