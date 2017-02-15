@@ -108,6 +108,9 @@ let parse_last_stanza (laststanza: line list) : word list =
     in
       dedup (List.fold_right append_by_line laststanza [])
 
+let only_sort (alist: 'a list) : 'a list =
+  List.sort (fun a b -> if a < b then -1 else 1) alist
+
 let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: line) (base_num: int) : (int * int) list =
   let ans1 =
     if l1 = l2
@@ -119,9 +122,9 @@ let parse3stanza (l1: line) (l2: line) (l3: line) (l4: line) (l5: line) (l6: lin
         then ans1
         else ans1 @ [(base_num + 3, base_num + 4)]
     in
-      let tot_dict = dedup (l1 @ l2 @ l3 @ l4)
+      let tot_dict = only_sort(l1 @ l3)
       in
-        if tot_dict = (parse_last_stanza ([l5;l6]))
+        if tot_dict = (only_sort (l5 @ l6))
           then
             ans2
           else
