@@ -1,6 +1,6 @@
 ### Feedback for Homework 02
 
-Run on February 14, 21:02:08 PM.
+Run on February 18, 04:41:30 AM.
 
 + Pass: Change into directory "Hwk_02".
 
@@ -137,6 +137,97 @@ List.sort (fun x y -> if x < y then -1 else 1) (dedup [[13; 1]; [13; 1]; [1; 2];
 
 
 + Pass: Check that the result of evaluating `split_by (=) [] []` matches the pattern `[[ ]]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating 
+   ```
+List.map (List.map (fun y -> List.map Char.lowercase y)) (convert_to_non_blank_lines_of_words ['W'; 'h'; 'e'; ','; 'a'; ' '; 'b'])
+   ```
+ matches the pattern `[[['w'; 'h'; 'e']; ['a']; ['b']]]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating 
+   ```
+List.map (List.map (fun y -> List.map Char.lowercase y)) (convert_to_non_blank_lines_of_words ['W'; 'h'; 'e'; ','; 'a'; '
+'; 'b'])
+   ```
+ matches the pattern `[[['w'; 'h'; 'e']; ['a']]; [['b']]]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating 
+   ```
+List.map (List.map (fun y -> List.map Char.lowercase y)) (convert_to_non_blank_lines_of_words ['W'; 'h'; 'e'; ' '; ','; 'a'; '-'; 'b'])
+   ```
+ matches the pattern `[[['w'; 'h'; 'e']; ['a']; ['b']]]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "not_a_paradelle_emma_1.txt"` matches the pattern `IncorrectLastStanza`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "not_a_paradelle_empty_file.txt"` matches the pattern `IncorrectNumLines 0`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "not_a_paradelle_susan_1.txt"` matches the pattern `IncorrectLines [(1, 2); (11, 12); (17, 18)]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "not_a_paradelle_susan_2.txt"` matches the pattern `IncorrectLines [(11, 12); (17, 18)]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "not_a_paradelle_susan_3.txt"` matches the pattern `IncorrectLines [(1, 2); (11, 12); (17, 18)]`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "not_a_paradelle_wrong_line_count.txt"` matches the pattern `IncorrectNumLines 9`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "paradelle_emma_1.txt"` matches the pattern `OK`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "paradelle_susan_1.txt"` matches the pattern `OK`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "paradelle_susan_2.txt"` matches the pattern `OK`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating `paradelle "abc.txt"` matches the pattern `FileNotFound "abc.txt"`.
 
    
 
