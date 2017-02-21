@@ -1,6 +1,6 @@
 ### Feedback for Lab 06
 
-Run on February 21, 14:08:31 PM.
+Run on February 21, 14:19:06 PM.
 
 + Pass: Change into directory "Lab_06".
 
@@ -168,124 +168,64 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
 
 
-+ Fail: Check that the result of evaluating `tf_size (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `3`.
++ Pass: Check that the result of evaluating `tf_size (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `3`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_size
-Hint: Did you mean t_size?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_size (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `7`.
++ Pass: Check that the result of evaluating `tf_size (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `7`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_size
-Hint: Did you mean t_size?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_size (Leaf 5)` matches the pattern `1`.
++ Pass: Check that the result of evaluating `tf_size (Leaf 5)` matches the pattern `1`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_size
-Hint: Did you mean t_size?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_sum (Fork (0, Leaf (- 1), Fork(1, Leaf 2, (Leaf (- 2)))))` matches the pattern `0`.
++ Pass: Check that the result of evaluating `tf_sum (Fork (0, Leaf (- 1), Fork(1, Leaf 2, (Leaf (- 2)))))` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_sum
-Hint: Did you mean t_sum?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_sum (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `28`.
++ Pass: Check that the result of evaluating `tf_sum (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `28`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_sum
-Hint: Did you mean t_sum?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_sum (Leaf 5)` matches the pattern `5`.
++ Pass: Check that the result of evaluating `tf_sum (Leaf 5)` matches the pattern `5`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_sum
-Hint: Did you mean t_sum?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_char_count (Fork ("a", Fork ("b", Leaf "c", Leaf "d"), Leaf "e"))` matches the pattern `5`.
++ Pass: Check that the result of evaluating `tf_char_count (Fork ("a", Fork ("b", Leaf "c", Leaf "d"), Leaf "e"))` matches the pattern `5`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_char_count
-Hint: Did you mean t_charcount?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_char_count (Leaf "a")` matches the pattern `1`.
++ Pass: Check that the result of evaluating `tf_char_count (Leaf "a")` matches the pattern `1`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_char_count
-Hint: Did you mean t_charcount?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_concat (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `"HelloWorld!"`.
++ Pass: Check that the result of evaluating `tf_concat (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `"HelloWorld!"`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_concat
-Hint: Did you mean t_concat?
-`
 
 
-+ Fail: Check that the result of evaluating `tf_concat (Leaf "Hello!")` matches the pattern `"Hello!"`.
++ Pass: Check that the result of evaluating `tf_concat (Leaf "Hello!")` matches the pattern `"Hello!"`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value tf_concat
-Hint: Did you mean t_concat?
-`
 
 
 + Fail: Check that the result of evaluating `tf_opt_size (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `3`.
