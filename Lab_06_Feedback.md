@@ -1,6 +1,6 @@
 ### Feedback for Lab 06
 
-Run on February 21, 13:46:55 PM.
+Run on February 21, 14:05:35 PM.
 
 + Pass: Change into directory "Lab_06".
 
@@ -78,18 +78,13 @@ Run on February 21, 13:46:55 PM.
 
 
 
-+ Fail: Check that the result of evaluating `t_opt_size (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `3`.
++ Pass: Check that the result of evaluating `t_opt_size (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `3`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_size
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 t_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (Some "d"))))
    ```
@@ -97,91 +92,57 @@ t_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (So
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_size
-`
 
 
-+ Fail: Check that the result of evaluating `t_opt_size (Leaf None)` matches the pattern `0`.
++ Pass: Check that the result of evaluating `t_opt_size (Leaf None)` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_size
-`
 
 
 + Fail: Check that the result of evaluating `t_opt_size (Fork (None, (Leaf None), (Leaf None)))` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_size
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Invalid statement".
 `
 
-
-+ Fail: Check that the result of evaluating `t_opt_sum (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `6`.
++ Pass: Check that the result of evaluating `t_opt_sum (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `6`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_sum
-`
 
 
 + Fail: Check that the result of evaluating `t_opt_sum (Fork (None, (Leaf None), (Leaf None)))` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_sum
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Invalid statement".
 `
 
-
-+ Fail: Check that the result of evaluating `t_opt_sum (Leaf None)` matches the pattern `0`.
++ Pass: Check that the result of evaluating `t_opt_sum (Leaf None)` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_sum
-`
 
 
-+ Fail: Check that the result of evaluating `t_opt_charcount (Leaf None)` matches the pattern `0`.
++ Pass: Check that the result of evaluating `t_opt_charcount (Leaf None)` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_charcount
-`
 
 
-+ Fail: Check that the result of evaluating `t_opt_charcount (Leaf (Some "abcd"))` matches the pattern `4`.
++ Pass: Check that the result of evaluating `t_opt_charcount (Leaf (Some "abcd"))` matches the pattern `4`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_charcount
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 t_opt_charcount (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (Some "d"))))
    ```
@@ -189,36 +150,21 @@ t_opt_charcount (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Lea
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_charcount
-`
 
 
-+ Fail: Check that the result of evaluating `t_opt_concat (Leaf None)` matches the pattern `""`.
++ Pass: Check that the result of evaluating `t_opt_concat (Leaf None)` matches the pattern `""`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_concat
-`
 
 
-+ Fail: Check that the result of evaluating `t_opt_concat (Leaf (Some "abcd"))` matches the pattern `"abcd"`.
++ Pass: Check that the result of evaluating `t_opt_concat (Leaf (Some "abcd"))` matches the pattern `"abcd"`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_concat
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (Some "d"))))
    ```
@@ -226,11 +172,6 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_opt_concat
-`
 
 
 + Fail: Check that the result of evaluating `tf_size (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `3`.
@@ -361,6 +302,7 @@ Hint: Did you mean t_concat?
 
  ` ;;
 [24mError: Unbound value tf_opt_size
+Hint: Did you mean t_opt_size?
 `
 
 
@@ -376,6 +318,7 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
  ` ;;
 [24mError: Unbound value tf_opt_size
+Hint: Did you mean t_opt_size?
 `
 
 
@@ -387,6 +330,7 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
  ` ;;
 [24mError: Unbound value tf_opt_size
+Hint: Did you mean t_opt_size?
 `
 
 
@@ -398,6 +342,7 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
  ` ;;
 [24mError: Unbound value tf_opt_size
+Hint: Did you mean t_opt_size?
 `
 
 
@@ -409,6 +354,7 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
  ` ;;
 [24mError: Unbound value tf_opt_sum
+Hint: Did you mean t_opt_sum?
 `
 
 
@@ -420,6 +366,7 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
  ` ;;
 [24mError: Unbound value tf_opt_sum
+Hint: Did you mean t_opt_sum?
 `
 
 
@@ -431,6 +378,7 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
  ` ;;
 [24mError: Unbound value tf_opt_sum
+Hint: Did you mean t_opt_sum?
 `
 
 
@@ -440,9 +388,14 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
    Your solution evaluated incorrectly and produced some part of the following:
 
- ` ;;
+ 
+   ```
+ ;;
 [24mError: Unbound value tf_opt_char_count
-`
+Hint: Did you mean t_opt_charcount?
+
+   ```
+
 
 
 + Fail: Check that the result of evaluating `tf_opt_char_count (Leaf (Some "abcd"))` matches the pattern `4`.
@@ -451,9 +404,14 @@ tf_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (S
 
    Your solution evaluated incorrectly and produced some part of the following:
 
- ` ;;
+ 
+   ```
+ ;;
 [24mError: Unbound value tf_opt_char_count
-`
+Hint: Did you mean t_opt_charcount?
+
+   ```
+
 
 
 + Fail: Check that the result of evaluating 
@@ -466,9 +424,14 @@ tf_opt_char_count (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, L
 
    Your solution evaluated incorrectly and produced some part of the following:
 
- ` ;;
+ 
+   ```
+ ;;
 [24mError: Unbound value tf_opt_char_count
-`
+Hint: Did you mean t_opt_charcount?
+
+   ```
+
 
 
 + Fail: Check that the result of evaluating `tf_opt_concat (Leaf None)` matches the pattern `""`.
@@ -479,6 +442,7 @@ tf_opt_char_count (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, L
 
  ` ;;
 [24mError: Unbound value tf_opt_concat
+Hint: Did you mean t_opt_concat?
 `
 
 
@@ -490,6 +454,7 @@ tf_opt_char_count (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, L
 
  ` ;;
 [24mError: Unbound value tf_opt_concat
+Hint: Did you mean t_opt_concat?
 `
 
 
@@ -505,6 +470,7 @@ tf_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf 
 
  ` ;;
 [24mError: Unbound value tf_opt_concat
+Hint: Did you mean t_opt_concat?
 `
 
 
