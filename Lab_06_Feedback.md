@@ -1,6 +1,6 @@
 ### Feedback for Lab 06
 
-Run on February 21, 13:26:14 PM.
+Run on February 21, 13:46:55 PM.
 
 + Pass: Change into directory "Lab_06".
 
@@ -18,114 +18,64 @@ Run on February 21, 13:26:14 PM.
 
 
 
-+ Fail: Check that the result of evaluating `t_size (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `3`.
++ Pass: Check that the result of evaluating `t_size (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `3`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_size
-`
 
 
-+ Fail: Check that the result of evaluating `t_size (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `7`.
++ Pass: Check that the result of evaluating `t_size (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `7`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_size
-`
 
 
-+ Fail: Check that the result of evaluating `t_size (Leaf 5)` matches the pattern `1`.
++ Pass: Check that the result of evaluating `t_size (Leaf 5)` matches the pattern `1`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_size
-`
 
 
-+ Fail: Check that the result of evaluating `t_sum (Fork (0, Leaf (- 1), Fork(1, Leaf 2, (Leaf (- 2)))))` matches the pattern `0`.
++ Pass: Check that the result of evaluating `t_sum (Fork (0, Leaf (- 1), Fork(1, Leaf 2, (Leaf (- 2)))))` matches the pattern `0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_sum
-`
 
 
-+ Fail: Check that the result of evaluating `t_sum (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `28`.
++ Pass: Check that the result of evaluating `t_sum (Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4)))` matches the pattern `28`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_sum
-`
 
 
-+ Fail: Check that the result of evaluating `t_sum (Leaf 5)` matches the pattern `5`.
++ Pass: Check that the result of evaluating `t_sum (Leaf 5)` matches the pattern `5`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_sum
-`
 
 
-+ Fail: Check that the result of evaluating `t_charcount (Fork ("a", Fork ("b", Leaf "c", Leaf "d"), Leaf "e"))` matches the pattern `5`.
++ Pass: Check that the result of evaluating `t_charcount (Fork ("a", Fork ("b", Leaf "c", Leaf "d"), Leaf "e"))` matches the pattern `5`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_charcount
-`
 
 
-+ Fail: Check that the result of evaluating `t_charcount (Leaf "a")` matches the pattern `1`.
++ Pass: Check that the result of evaluating `t_charcount (Leaf "a")` matches the pattern `1`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_charcount
-`
 
 
-+ Fail: Check that the result of evaluating `t_concat (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `"HelloWorld!"`.
++ Pass: Check that the result of evaluating `t_concat (Fork ("Hello", Leaf "World", Leaf "!"))` matches the pattern `"HelloWorld!"`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_concat
-`
 
 
-+ Fail: Check that the result of evaluating `t_concat (Leaf "Hello!")` matches the pattern `"Hello!"`.
++ Pass: Check that the result of evaluating `t_concat (Leaf "Hello!")` matches the pattern `"Hello!"`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value t_concat
-`
 
 
 + Fail: Check that the result of evaluating `t_opt_size (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `3`.
@@ -291,6 +241,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_size
+Hint: Did you mean t_size?
 `
 
 
@@ -302,6 +253,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_size
+Hint: Did you mean t_size?
 `
 
 
@@ -313,6 +265,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_size
+Hint: Did you mean t_size?
 `
 
 
@@ -324,6 +277,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_sum
+Hint: Did you mean t_sum?
 `
 
 
@@ -335,6 +289,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_sum
+Hint: Did you mean t_sum?
 `
 
 
@@ -346,6 +301,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_sum
+Hint: Did you mean t_sum?
 `
 
 
@@ -357,6 +313,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_char_count
+Hint: Did you mean t_charcount?
 `
 
 
@@ -368,6 +325,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_char_count
+Hint: Did you mean t_charcount?
 `
 
 
@@ -379,6 +337,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_concat
+Hint: Did you mean t_concat?
 `
 
 
@@ -390,6 +349,7 @@ t_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (
 
  ` ;;
 [24mError: Unbound value tf_concat
+Hint: Did you mean t_concat?
 `
 
 
