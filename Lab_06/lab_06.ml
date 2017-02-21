@@ -104,3 +104,33 @@ let tf_opt_concat (node: string option tree): string =
   tfold (fun a -> match a with | None -> "" | Some i -> i)
         (fun a b c -> match a with | None -> b ^ c | Some i -> i ^ b ^ c)
         node
+
+type 'a btree = Empty
+              | Node of 'a btree * 'a * 'a btree
+
+let rec bt_insert_by (f: 'a -> 'a -> int) (node: 'a) (t: 'a btree) : 'a btree =
+  match t with
+  | Empty -> Node(Empty, node, Empty)
+  | Node(ltree, v, rtree) ->
+      if (f node v <= 0)
+        then Node (bt_insert_by f node ltree, v, rtree)
+        else Node (ltree, v, bt_insert_by f node rtree)
+
+let t6 = Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Empty))
+
+let rec bt_elem_by (f: 'a -> 'b -> bool) (b: 'b) (t: 'a btree) : bool =
+  match t with
+  | Empty -> false
+  | Node(ltree, v, rtree) -> (f v b) ||
+                             bt_elem_by f b ltree ||
+                             bt_elem_by f b rtree
+
+let rec bt_to_list (t: 'a btree) : 'a list =
+  match t with
+  | Empty -> []
+  | Node(ltree, v, rtree) -> bt_to_list ltree @ [v] @ bt_to_list rtree
+
+let rec btfold (b: 'b) (f: 'b -> 'a -> 'b -> 'b) (t: 'a btree) : 'b =
+  match t with
+  | Empty -> b
+  | Node(ltree, v, rtree) -> f (btfold b f ltree) v (btfold b f rtree)
