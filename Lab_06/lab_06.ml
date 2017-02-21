@@ -84,3 +84,23 @@ let tf_char_count (node: string tree) : int =
 
 let tf_concat (node: string tree): string =
   tfold (fun a -> a) (fun a b c -> a ^ b ^ c) node
+
+let tf_opt_size (node: 'a option tree): int =
+  tfold (fun a -> match a with | None -> 0 | Some i -> 1)
+        (fun a b c -> match a with | None -> b + c | Some i -> 1 + b + c)
+        node
+
+let tf_opt_sum (node: int option tree): int =
+  tfold (fun a -> match a with | None -> 0 | Some i -> i)
+        (fun a b c -> match a with | None -> b + c | Some i -> i + b + c)
+        node
+
+let tf_opt_char_count (node: string option tree): int =
+  tfold (fun a -> match a with | None -> 0 | Some i -> String.length i)
+        (fun a b c -> match a with | None -> b + c | Some i -> String.length i + b + c)
+        node
+
+let tf_opt_concat (node: string option tree): string =
+  tfold (fun a -> match a with | None -> "" | Some i -> i)
+        (fun a b c -> match a with | None -> b ^ c | Some i -> i ^ b ^ c)
+        node
