@@ -1,6 +1,6 @@
 ### Feedback for Lab 06
 
-Run on February 21, 15:43:08 PM.
+Run on February 21, 16:01:07 PM.
 
 + Pass: Change into directory "Lab_06".
 
@@ -428,31 +428,19 @@ bt_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empty
 
 
 
-+ Fail: Check that the result of evaluating `btf_to_list Empty` matches the pattern `[ ]`.
++ Pass: Check that the result of evaluating `btf_to_list Empty` matches the pattern `[ ]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_to_list
-Hint: Did you mean bt_to_list?
-`
 
 
-+ Fail: Check that the result of evaluating `btf_to_list (Node (Empty, 3, Empty))` matches the pattern `[3]`.
++ Pass: Check that the result of evaluating `btf_to_list (Node (Empty, 3, Empty))` matches the pattern `[3]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_to_list
-Hint: Did you mean bt_to_list?
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 btf_to_list (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))))
    ```
@@ -460,15 +448,9 @@ btf_to_list (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Em
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_to_list
-Hint: Did you mean bt_to_list?
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 btf_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empty, "d", Empty))))
    ```
@@ -476,27 +458,15 @@ btf_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empt
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_to_list
-Hint: Did you mean bt_to_list?
-`
 
 
-+ Fail: Check that the result of evaluating `btf_elem_by (=) 5 Empty` matches the pattern `false`.
++ Pass: Check that the result of evaluating `btf_elem_by (=) 5 Empty` matches the pattern `false`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_elem_by
-Hint: Did you mean bt_elem_by?
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
  btf_elem_by (=) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))));
    ```
@@ -504,27 +474,15 @@ Hint: Did you mean bt_elem_by?
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_elem_by
-Hint: Did you mean bt_elem_by?
-`
 
 
-+ Fail: Check that the result of evaluating `btf_elem_by (=) 5 Empty` matches the pattern `false`.
++ Pass: Check that the result of evaluating `btf_elem_by (=) 5 Empty` matches the pattern `false`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_elem_by
-Hint: Did you mean bt_elem_by?
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 btf_elem_by (<) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))))
    ```
@@ -532,15 +490,9 @@ btf_elem_by (<) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty,
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_elem_by
-Hint: Did you mean bt_elem_by?
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 btf_elem_by (>) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))))
    ```
@@ -548,11 +500,5 @@ btf_elem_by (>) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty,
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value btf_elem_by
-Hint: Did you mean bt_elem_by?
-`
 
 
