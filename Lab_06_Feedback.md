@@ -1,6 +1,6 @@
 ### Feedback for Lab 06
 
-Run on February 21, 14:46:45 PM.
+Run on February 21, 15:43:08 PM.
 
 + Pass: Change into directory "Lab_06".
 
@@ -318,18 +318,13 @@ tf_opt_concat (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf 
 
 
 
-+ Fail: Check that the result of evaluating `bt_insert_by Pervasives.compare 3 Empty` matches the pattern `Node (Empty, 3, Empty)`.
++ Pass: Check that the result of evaluating `bt_insert_by Pervasives.compare 3 Empty` matches the pattern `Node (Empty, 3, Empty)`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_insert_by
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_insert_by Pervasives.compare 2 (bt_insert_by Pervasives.compare 4 (bt_insert_by Pervasives.compare 3 Empty))
    ```
@@ -337,14 +332,9 @@ bt_insert_by Pervasives.compare 2 (bt_insert_by Pervasives.compare 4 (bt_insert_
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_insert_by
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_insert_by Pervasives.compare 3 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Empty)))
    ```
@@ -352,14 +342,9 @@ bt_insert_by Pervasives.compare 3 (Node (Node (Empty, 3, Empty), 4, Node (Empty,
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_insert_by
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_insert_by Pervasives.compare 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Empty)))
    ```
@@ -367,25 +352,15 @@ bt_insert_by Pervasives.compare 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty,
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_insert_by
-`
 
 
-+ Fail: Check that the result of evaluating `bt_elem_by (=) 5 Empty` matches the pattern `false`.
++ Pass: Check that the result of evaluating `bt_elem_by (=) 5 Empty` matches the pattern `false`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_elem_by
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
  bt_elem_by (=) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))));
    ```
@@ -393,25 +368,15 @@ bt_insert_by Pervasives.compare 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty,
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_elem_by
-`
 
 
-+ Fail: Check that the result of evaluating `bt_elem_by (=) 5 Empty` matches the pattern `false`.
++ Pass: Check that the result of evaluating `bt_elem_by (=) 5 Empty` matches the pattern `false`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_elem_by
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_elem_by (<) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))))
    ```
@@ -419,14 +384,9 @@ bt_elem_by (<) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_elem_by
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_elem_by (>) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))))
    ```
@@ -434,36 +394,21 @@ bt_elem_by (>) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_elem_by
-`
 
 
-+ Fail: Check that the result of evaluating `bt_to_list Empty` matches the pattern `[ ]`.
++ Pass: Check that the result of evaluating `bt_to_list Empty` matches the pattern `[ ]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_to_list
-`
 
 
-+ Fail: Check that the result of evaluating `bt_to_list (Node (Empty, 3, Empty))` matches the pattern `[3]`.
++ Pass: Check that the result of evaluating `bt_to_list (Node (Empty, 3, Empty))` matches the pattern `[3]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_to_list
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_to_list (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Empty))))
    ```
@@ -471,14 +416,9 @@ bt_to_list (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Emp
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_to_list
-`
 
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 bt_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empty, "d", Empty))))
    ```
@@ -486,11 +426,6 @@ bt_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empty
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value bt_to_list
-`
 
 
 + Fail: Check that the result of evaluating `btf_to_list Empty` matches the pattern `[ ]`.
@@ -501,6 +436,7 @@ bt_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empty
 
  ` ;;
 [24mError: Unbound value btf_to_list
+Hint: Did you mean bt_to_list?
 `
 
 
@@ -512,6 +448,7 @@ bt_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empty
 
  ` ;;
 [24mError: Unbound value btf_to_list
+Hint: Did you mean bt_to_list?
 `
 
 
@@ -527,6 +464,7 @@ btf_to_list (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty, 6, Em
 
  ` ;;
 [24mError: Unbound value btf_to_list
+Hint: Did you mean bt_to_list?
 `
 
 
@@ -542,6 +480,7 @@ btf_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empt
 
  ` ;;
 [24mError: Unbound value btf_to_list
+Hint: Did you mean bt_to_list?
 `
 
 
@@ -553,6 +492,7 @@ btf_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empt
 
  ` ;;
 [24mError: Unbound value btf_elem_by
+Hint: Did you mean bt_elem_by?
 `
 
 
@@ -568,6 +508,7 @@ btf_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empt
 
  ` ;;
 [24mError: Unbound value btf_elem_by
+Hint: Did you mean bt_elem_by?
 `
 
 
@@ -579,6 +520,7 @@ btf_to_list (Node (Node (Empty, "a",  Empty), "b", Node (Empty, "c",  Node (Empt
 
  ` ;;
 [24mError: Unbound value btf_elem_by
+Hint: Did you mean bt_elem_by?
 `
 
 
@@ -594,6 +536,7 @@ btf_elem_by (<) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty,
 
  ` ;;
 [24mError: Unbound value btf_elem_by
+Hint: Did you mean bt_elem_by?
 `
 
 
@@ -609,6 +552,7 @@ btf_elem_by (>) 6 (Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Node (Empty,
 
  ` ;;
 [24mError: Unbound value btf_elem_by
+Hint: Did you mean bt_elem_by?
 `
 
 
