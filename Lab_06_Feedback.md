@@ -1,6 +1,6 @@
 ### Feedback for Lab 06
 
-Run on February 21, 14:05:35 PM.
+Run on February 21, 14:08:31 PM.
 
 + Pass: Change into directory "Lab_06".
 
@@ -100,14 +100,11 @@ t_opt_size (Fork (Some "a", Leaf (Some "b"), Fork (Some "c", Leaf None, Leaf (So
 
 
 
-+ Fail: Check that the result of evaluating `t_opt_size (Fork (None, (Leaf None), (Leaf None)))` matches the pattern `0`.
++ Pass: Check that the result of evaluating `t_opt_size (Fork (None, (Leaf None), (Leaf None)))` matches the pattern `0`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Invalid statement".
-`
+
 
 + Pass: Check that the result of evaluating `t_opt_sum (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))` matches the pattern `6`.
 
@@ -115,14 +112,11 @@ Exception: Failure "Invalid statement".
 
 
 
-+ Fail: Check that the result of evaluating `t_opt_sum (Fork (None, (Leaf None), (Leaf None)))` matches the pattern `0`.
++ Pass: Check that the result of evaluating `t_opt_sum (Fork (None, (Leaf None), (Leaf None)))` matches the pattern `0`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Invalid statement".
-`
+
 
 + Pass: Check that the result of evaluating `t_opt_sum (Leaf None)` matches the pattern `0`.
 
