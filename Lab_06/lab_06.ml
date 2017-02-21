@@ -34,14 +34,14 @@ let rec t_opt_size (node: 'a option tree): int =
   match node with
   | Leaf None -> 0
   | Leaf Some lnode -> 1
-  | Fork (None, ltree, rtree) -> raise (Failure "Invalid statement")
+  | Fork (None, ltree, rtree) -> 0 + t_opt_size ltree + t_opt_size rtree
   | Fork (Some fnode, ltree, rtree) -> 1 + t_opt_size ltree + t_opt_size rtree
 
 let rec t_opt_sum (node: int option tree): int =
   match node with
   | Leaf None -> 0
   | Leaf Some lnode -> lnode
-  | Fork (None, ltree, rtree) -> raise (Failure "Invalid statement")
+  | Fork (None, ltree, rtree) -> 0 + t_opt_sum ltree + t_opt_sum rtree
   | Fork (Some fnode, ltree, rtree) -> fnode + t_opt_sum ltree + t_opt_sum rtree
 
 let t7 = (Fork (Some 1, Leaf (Some 2), Fork (Some 3, Leaf None, Leaf None)))
@@ -51,7 +51,9 @@ let rec t_opt_charcount (node: string option tree): int =
   match node with
   | Leaf None -> 0
   | Leaf Some lnode -> String.length lnode
-  | Fork (None, ltree, rtree) -> raise (Failure "Invalid statement")
+  | Fork (None, ltree, rtree) -> 0 +
+                                 t_opt_charcount ltree +
+                                 t_opt_charcount rtree
   | Fork (Some fnode, ltree, rtree) -> String.length fnode +
                                        t_opt_charcount ltree +
                                        t_opt_charcount rtree
@@ -60,7 +62,7 @@ let rec t_opt_concat (node: string option tree): string =
   match node with
   | Leaf None -> ""
   | Leaf Some lnode -> lnode
-  | Fork (None, ltree, rtree) -> raise (Failure "Invalid statement")
+  | Fork (None, ltree, rtree) -> t_opt_concat ltree ^ t_opt_concat rtree
   | Fork (Some fnode, ltree, rtree) -> fnode ^
                                        t_opt_concat ltree ^
                                        t_opt_concat rtree
