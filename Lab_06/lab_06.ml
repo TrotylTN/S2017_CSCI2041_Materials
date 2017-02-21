@@ -5,6 +5,7 @@ type 'a tree = Leaf of 'a
 let t1 = Leaf 5
 let t2 = Fork (3, Leaf 3, Fork (2, t1, t1))
 let t3 = Fork ("Hello", Leaf "World", Leaf "!")
+let t4 = Fork (7, Fork (5, Leaf 1, Leaf 2), Fork (6, Leaf 3, Leaf 4))
 
 let rec t_size node =
   match node with
@@ -66,3 +67,20 @@ let rec t_opt_concat (node: string option tree): string =
   | Fork (Some fnode, ltree, rtree) -> fnode ^
                                        t_opt_concat ltree ^
                                        t_opt_concat rtree
+
+let rec tfold (l:'a -> 'b) (f:'a -> 'b -> 'b -> 'b)  (t:'a tree) : 'b =
+        match t with
+        | Leaf v -> l v
+        | Fork (v, t1, t2) -> f v (tfold l f t1) (tfold l f t2)
+
+let tf_size (node: 'a tree) : int =
+  tfold (fun a -> 1) (fun a b c -> 1 + b + c) node
+
+let tf_sum (node: int tree) : int =
+  tfold (fun a -> a) (fun a b c -> a + b + c) node
+
+let tf_char_count (node: string tree) : int =
+  tfold (fun a -> String.length a) (fun a b c -> String.length a + b + c) node
+
+let tf_concat (node: string tree): string =
+  tfold (fun a -> a) (fun a b c -> a ^ b ^ c) node
