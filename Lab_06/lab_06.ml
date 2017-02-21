@@ -134,3 +134,19 @@ let rec btfold (b: 'b) (f: 'b -> 'a -> 'b -> 'b) (t: 'a btree) : 'b =
   match t with
   | Empty -> b
   | Node(ltree, v, rtree) -> f (btfold b f ltree) v (btfold b f rtree)
+
+let btf_elem_by (f: 'a -> 'b -> bool) (b: 'b) (t: 'a btree) : bool =
+  btfold false (fun lt v rt -> lt || (f v b) || rt ) t
+
+let btf_to_list (t: 'a btree) : 'a list =
+  btfold [] (fun lt v rt -> lt @ [v] @ rt) t
+
+(*
+  Why will using btfold for bt_insert_by might be difficult?
+
+  Since we don't know where the new node should be inserted and we need another
+    function to determine that. Btfold just can re-build the tree by the base
+    case for Empty node (which is the 1st argument) and the combining way for
+    induction (which is the 2nd argument). Thus, it's hard to implement this
+    function by using btfold implemented above.
+ *)
