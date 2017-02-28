@@ -84,3 +84,69 @@ let tf_char_count (node: string tree) : int =
 
 let tf_concat (node: string tree): string =
   tfold (fun a -> a) (fun a b c -> a ^ b ^ c) node
+
+let tf_opt_size (node: 'a option tree): int =
+  tfold (fun a -> match a with | None -> 0 | Some i -> 1)
+        (fun a b c -> match a with | None -> b + c | Some i -> 1 + b + c)
+        node
+
+let tf_opt_sum (node: int option tree): int =
+  tfold (fun a -> match a with | None -> 0 | Some i -> i)
+        (fun a b c -> match a with | None -> b + c | Some i -> i + b + c)
+        node
+
+let tf_opt_char_count (node: string option tree): int =
+  tfold (fun a -> match a with | None -> 0 | Some i -> String.length i)
+        (fun a b c -> match a with | None -> b + c | Some i -> String.length i + b + c)
+        node
+
+let tf_opt_concat (node: string option tree): string =
+  tfold (fun a -> match a with | None -> "" | Some i -> i)
+        (fun a b c -> match a with | None -> b ^ c | Some i -> i ^ b ^ c)
+        node
+
+type 'a btree = Empty
+              | Node of 'a btree * 'a * 'a btree
+
+let rec bt_insert_by (f: 'a -> 'a -> int) (node: 'a) (t: 'a btree) : 'a btree =
+  match t with
+  | Empty -> Node(Empty, node, Empty)
+  | Node(ltree, v, rtree) ->
+      if (f node v <= 0)
+        then Node (bt_insert_by f node ltree, v, rtree)
+        else Node (ltree, v, bt_insert_by f node rtree)
+
+let t6 = Node (Node (Empty, 3, Empty), 4, Node (Empty, 5, Empty))
+
+let rec bt_elem_by (f: 'a -> 'b -> bool) (b: 'b) (t: 'a btree) : bool =
+  match t with
+  | Empty -> false
+  | Node(ltree, v, rtree) -> (f v b) ||
+                             bt_elem_by f b ltree ||
+                             bt_elem_by f b rtree
+
+let rec bt_to_list (t: 'a btree) : 'a list =
+  match t with
+  | Empty -> []
+  | Node(ltree, v, rtree) -> bt_to_list ltree @ [v] @ bt_to_list rtree
+
+let rec btfold (b: 'b) (f: 'b -> 'a -> 'b -> 'b) (t: 'a btree) : 'b =
+  match t with
+  | Empty -> b
+  | Node(ltree, v, rtree) -> f (btfold b f ltree) v (btfold b f rtree)
+
+let btf_elem_by (f: 'a -> 'b -> bool) (b: 'b) (t: 'a btree) : bool =
+  btfold false (fun lt v rt -> lt || (f v b) || rt ) t
+
+let btf_to_list (t: 'a btree) : 'a list =
+  btfold [] (fun lt v rt -> lt @ [v] @ rt) t
+
+(*
+  Why will using btfold for bt_insert_by might be difficult?
+
+  Since we don't know where the new node should be inserted and we need another
+    function to determine that. Btfold just can re-build the tree by the base
+    case for Empty node (which is the 1st argument) and the combining way for
+    induction (which is the 2nd argument). Thus, it's hard to implement this
+    function by using btfold implemented above.
+ *)
