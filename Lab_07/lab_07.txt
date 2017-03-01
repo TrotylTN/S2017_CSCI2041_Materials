@@ -1,0 +1,36 @@
+Prove
+  is_elem e (insert e t)
+
+1. the induction principle for the type of data used in the sample functions
+P(Empty) and P(Branch1) and P(Branch2) => P(Branch(Branch1, v, Branch 2))
+
+2. property asked to prove
+is_elem e (insert e t) = true
+
+3. base case
+P(Empty): to prove is_elem e (insert e []) = true
+  is_elem e (insert e [])
+  = is_elem e Branch(Empty, e, Empty) by definition of insert
+  = true by definition of is_elem
+
+4. inductive case
+P(Branch(Branch1, v, Branch2)): to prove is_elem e (insert e Branch(Branch1, v, Branch2)) = true
+  case 1: e = v
+    is_elem e (insert e Branch(Branch1, v, Branch2))
+    = is_elem e (Branch(Branch1, v, Branch2)) by definition of insert
+    = is_elem e (Branch(Branch1, e, Branch2)) by e = v
+    = true by definition of is_elem
+  case 2: e < v
+    is_elem e (insert e Branch(Branch1, v, Branch2))
+    = is_elem e Branch(insert e Branch1, v, Branch2) by definition of insert
+    = is_elem e (insert e Branch1) by definition of is_elem
+    = true by inductive hypothesis
+  case 3: e > v
+    is_elem e (insert e Branch(Branch1, v, Branch2))
+    = is_elem e Branch(Branch1, v, insert e Branch2) by definition of insert
+    = is_elem e (insert e Branch2) by definition of is_elem
+    = true by inductive hypothesis
+
+5. inductive hypothesis
+  P(Branch1) = true: is_elem e (insert e Branch1) = true is true;
+  P(Branch2) = true: is_elem e (insert e Branch2) = true is true
