@@ -33,6 +33,8 @@ let dedup (alist: 'a list) : 'a list =
       | [] -> [cur_num]
     in List.fold_right checksame templist []
 
+
+(*start with a tuple which the first element is buffer and the second is the answer. Tianjiao Yu*)
 let split_by (fop: 'a -> 'a -> bool) (tlist: 'a list) (olist: 'a list) : 'a list list =
   let checkdot this_val dotlist =
     let judge_pre p_ans t_num = p_ans || fop t_num this_val
@@ -78,6 +80,9 @@ let convert_char_list_option_to_char_list (olist: char list option) : char list 
   | None -> raise (Failure "Error in reading file")
   | Some alist -> alist
 
+
+(*it would be much easier by using list.filter fucntion. My functions contains only three lines if codes.
+  Using filter function also save you from checking empty lists.  Tianjiao Yu*)
 let convert_to_non_blank_lines_of_words (textlist: char list) : line list =
   let text_by_line = split_by (=) textlist ['\n'];
   in
