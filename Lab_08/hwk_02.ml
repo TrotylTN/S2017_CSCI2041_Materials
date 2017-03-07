@@ -161,27 +161,27 @@ let paradelle (filename: string) : result =
             in
             match restlines with
             | b1::b2::b3::b4::b5::b6::brestlines ->
-            (
-              let b_result = a_result @ (parse3stanza b1 b2 b3 b4 b5 b6 6) in
-              match brestlines with
-              | c1::c2::c3::c4::c5::c6::laststanza ->
               (
-                  let front_result = b_result @ (parse3stanza c1 c2 c3 c4 c5 c6 12) in
-                    if length front_result = 0
-                      then
-                        let tot_dic = dedup (a1 @ a2 @ a3 @ a4 @ a5 @ a6 @
-                                             b1 @ b2 @ b3 @ b4 @ b5 @ b6 @
-                                             c1 @ c2 @ c3 @ c4 @ c5 @ c6)
-                        in if (tot_dic = (parse_last_stanza laststanza))
-                          then
-                            OK
-                          else
-                            IncorrectLastStanza
-                      else
-                        IncorrectLines (front_result)
+                let b_result = a_result @ (parse3stanza b1 b2 b3 b4 b5 b6 6) in
+                match brestlines with
+                | c1::c2::c3::c4::c5::c6::laststanza ->
+                  (
+                    let front_result = b_result @ (parse3stanza c1 c2 c3 c4 c5 c6 12) in
+                      if length front_result = 0
+                        then
+                          let tot_dic = dedup (a1 @ a2 @ a3 @ a4 @ a5 @ a6 @
+                                               b1 @ b2 @ b3 @ b4 @ b5 @ b6 @
+                                               c1 @ c2 @ c3 @ c4 @ c5 @ c6)
+                          in if (tot_dic = (parse_last_stanza laststanza))
+                            then
+                              OK
+                            else
+                              IncorrectLastStanza
+                        else
+                          IncorrectLines (front_result)
+                  )
+                | _ -> IncorrectNumLines (length lower_content)
               )
-              | _ -> IncorrectNumLines (length lower_content)
-            )
             | _ -> IncorrectNumLines (length lower_content)
           )
         | _ -> IncorrectNumLines (length lower_content)
