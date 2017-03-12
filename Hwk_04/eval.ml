@@ -58,28 +58,86 @@ let sumToN_expr : expr =
            )
 
 
-let twenty_one : value = evaluate (App (sumToN_expr, Value (Int 6)));
+(* let twenty_one : value = evaluate (App (sumToN_expr, Value (Int 6))); *)
 
-let freevars (e: expr) : string list =
-  let parse_e (e: expr) (binded: string list) (cur_list: string list) : (string list) =
+let freevars (e_origin: expr) : string list =
+  let rec parse_e (e: expr) (binded: string list) (cur_list: string list) : string list =
     match e with
     | Add (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | Sub (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | Mul (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | Div (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | Lt (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | Eq (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | And (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+
     | If (e1, e2, e3) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+      let e2list =
+        parse_e e2 binded e1list
+      in
+        parse_e e3 binded e2list
+
     | Id (id_st) ->
       if (List.mem id_st binded = false && List.mem id_st cur_list = false)
         then cur_list
         else cur_list @ [id_st]
-    | Let (fname, e1, e2) ->
-    | LetRec (fname, e1, e2) ->
-    | App (f_id, e2) ->
-    | Lambda (temp_id, e1) ->
-    | Value (v) -> cur_list
 
+    | Let (fname, e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+      (* bind fname in the following in-statement *)
+        parse_e e2 (binded @ [fname]) e1list
+    | LetRec (fname, e1, e2) ->
+      let e1list =
+      (* recursive def allows call itself *)
+        parse_e e1 (binded @ [fname]) cur_list
+      in
+        parse_e e2 (binded @ [fname]) e1list
+    | App (e1, e2) ->
+      let e1list =
+        parse_e e1 binded cur_list
+      in
+        parse_e e2 binded e1list
+    | Lambda (temp_id, e1) ->
+      parse_e e1 (binded @ [temp_id]) cur_list
+    | Value (v) -> cur_list
   in
-    parse_e e [] []
+    parse_e e_origin [] []
