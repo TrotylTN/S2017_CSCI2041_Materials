@@ -116,8 +116,8 @@ let freevars (e_origin: expr) : string list =
 
     | Id (id_st) ->
       if (List.mem id_st binded = false && List.mem id_st cur_list = false)
-        then cur_list
-        else cur_list @ [id_st]
+        then cur_list @ [id_st]
+        else cur_list
 
     | Let (fname, e1, e2) ->
       let e1list =
