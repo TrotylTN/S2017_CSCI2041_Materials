@@ -29,8 +29,8 @@ and value
   (* You may need an extra constructor for this type. *)
 
 let evaluate (e:expr) : value =
-  (* raise (Failure "Complete this function...") *)
-  
+  raise (Failure "Complete this function...")
+
 
 
 
