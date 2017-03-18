@@ -1,6 +1,6 @@
 ### Feedback for Homework 04
 
-Run on March 17, 19:01:49 PM.
+Run on March 17, 19:04:52 PM.
 
 + Pass: Change into directory "Hwk_04".
 
@@ -72,81 +72,88 @@ Run on March 17, 19:01:49 PM.
 
 + Pass: Check that file "eval.ml" exists.
 
-+ Fail: Check that an OCaml file "eval.ml" has no syntax or type errors.
++ Pass: Check that an OCaml file "eval.ml" has no syntax or type errors.
 
-    OCaml file eval.ml has errors.
-
-    Run "ocaml eval.ml" to see them.
+    OCaml file "eval.ml" has no syntax or type errors.
 
 
 
 ##### ``freevars``
 
-+ Skip: Check that the result of evaluating `freevars (Add (Value (Int 3), Mul (Id "x", Id "y")))` matches the pattern `["x"; "y"]`.
++ Pass: Check that the result of evaluating `freevars (Add (Value (Int 3), Mul (Id "x", Id "y")))` matches the pattern `["x"; "y"]`.
 
    
 
-  This test was not run because of an earlier failing test.
+
 
 ##### ``freevars``
 
-+ Skip: Check that the result of evaluating `freevars (Let ("x", Id "z", Add (Value (Int 3), Mul (Id "x", Id "y"))))` matches the pattern `["z"; "y"]`.
++ Pass: Check that the result of evaluating `freevars (Let ("x", Id "z", Add (Value (Int 3), Mul (Id "x", Id "y"))))` matches the pattern `["z"; "y"]`.
 
    
 
-  This test was not run because of an earlier failing test.
+
 
 ##### ``freevars``
 
-+ Skip: Check that the result of evaluating `freevars (Let ("x", Id "x", Add (Value (Int 3), Mul (Id "x", Id "y"))))` matches the pattern `["x"; "y"]`.
++ Pass: Check that the result of evaluating `freevars (Let ("x", Id "x", Add (Value (Int 3), Mul (Id "x", Id "y"))))` matches the pattern `["x"; "y"]`.
 
    
 
-  This test was not run because of an earlier failing test.
+
 
 ##### ``freevars``
 
-+ Skip: Check that the result of evaluating `freevars (Lambda ("x", Add (Value (Int 3), Mul (Id "x", Id "y"))))` matches the pattern `["y"]`.
++ Pass: Check that the result of evaluating `freevars (Lambda ("x", Add (Value (Int 3), Mul (Id "x", Id "y"))))` matches the pattern `["y"]`.
 
    
 
-  This test was not run because of an earlier failing test.
+
 
 ##### ``freevars``
 
-+ Skip: Check that the result of evaluating `freevars sumToN_expr` matches the pattern `[]`.
++ Pass: Check that the result of evaluating `freevars sumToN_expr` matches the pattern `[]`.
 
    
 
-  This test was not run because of an earlier failing test.
+
 
 ##### ``evaluate``
 
-+ Skip: Check that the result of evaluating `evaluate (Add (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Int 7`.
++ Fail: Check that the result of evaluating `evaluate (Add (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Int 7`.
 
    
 
-  This test was not run because of an earlier failing test.
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Complete this function...".
+`
 
 ##### ``evaluate - logical``
 
-+ Skip: Check that the result of evaluating `evaluate (Eq (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool false`.
++ Fail: Check that the result of evaluating `evaluate (Eq (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool false`.
 
    
 
-  This test was not run because of an earlier failing test.
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Complete this function...".
+`
 
 ##### ``evaluate - logical``
 
-+ Skip: Check that the result of evaluating `evaluate (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool true`.
++ Fail: Check that the result of evaluating `evaluate (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool true`.
 
    
 
-  This test was not run because of an earlier failing test.
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Complete this function...".
+`
 
 ##### ``evaluate - conditional``
 
-+ Skip: Check that the result of evaluating 
++ Fail: Check that the result of evaluating 
    ```
 evaluate (If (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))), Value (Int 4), Value (Int 5)))
    ```
@@ -154,29 +161,48 @@ evaluate (If (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))), Value (Int
 
    
 
-  This test was not run because of an earlier failing test.
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Complete this function...".
+`
 
 ##### ``evaluate - non-recursive functions``
 
-+ Skip: Check that the result of evaluating `evaluate (App (add, Value (Int 1)))` matches the pattern `Closure ("y", Add (Id "x", Id "y"), [("x", Int 1)])`.
++ Fail: Check that the result of evaluating `evaluate (App (add, Value (Int 1)))` matches the pattern `Closure ("y", Add (Id "x", Id "y"), [("x", Int 1)])`.
 
    
 
-  This test was not run because of an earlier failing test.
+   Your solution evaluated incorrectly and produced some part of the following:
+
+ 
+   ```
+ ;;
+[24mError: This variant expression is expected to have type environment
+       The constructor :: does not belong to type environment
+
+   ```
+
+
 
 ##### ``evaluate - non-recursive functions``
 
-+ Skip: Check that the result of evaluating `evaluate (App ( (App (add, Value (Int 1))), Value (Int 2)))` matches the pattern `Int 3`.
++ Fail: Check that the result of evaluating `evaluate (App ( (App (add, Value (Int 1))), Value (Int 2)))` matches the pattern `Int 3`.
 
    
 
-  This test was not run because of an earlier failing test.
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Complete this function...".
+`
 
 ##### ``evaluate - recursive functions``
 
-+ Skip: Check that the result of evaluating `evaluate (App (sumToN_expr, Value (Int 10)))` matches the pattern `Int 55`.
++ Fail: Check that the result of evaluating `evaluate (App (sumToN_expr, Value (Int 10)))` matches the pattern `Int 55`.
 
    
 
-  This test was not run because of an earlier failing test.
+   Test failed. The following errors were reported:
+` ;;
+Exception: Failure "Complete this function...".
+`
 
