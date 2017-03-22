@@ -1,6 +1,6 @@
 ### Feedback for Homework 04
 
-Run on March 17, 19:04:52 PM.
+Run on March 22, 06:32:09 AM.
 
 + Pass: Change into directory "Hwk_04".
 
@@ -120,40 +120,31 @@ Run on March 17, 19:04:52 PM.
 
 ##### ``evaluate``
 
-+ Fail: Check that the result of evaluating `evaluate (Add (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Int 7`.
++ Pass: Check that the result of evaluating `evaluate (Add (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Int 7`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Complete this function...".
-`
+
 
 ##### ``evaluate - logical``
 
-+ Fail: Check that the result of evaluating `evaluate (Eq (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool false`.
++ Pass: Check that the result of evaluating `evaluate (Eq (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool false`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Complete this function...".
-`
+
 
 ##### ``evaluate - logical``
 
-+ Fail: Check that the result of evaluating `evaluate (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool true`.
++ Pass: Check that the result of evaluating `evaluate (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))))` matches the pattern `Bool true`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Complete this function...".
-`
+
 
 ##### ``evaluate - conditional``
 
-+ Fail: Check that the result of evaluating 
++ Pass: Check that the result of evaluating 
    ```
 evaluate (If (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))), Value (Int 4), Value (Int 5)))
    ```
@@ -161,39 +152,45 @@ evaluate (If (Lt (Value (Int 1), Mul (Value (Int 2), Value (Int 3))), Value (Int
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Complete this function...".
-`
-
-##### ``evaluate - non-recursive functions``
-
-+ Fail: Check that the result of evaluating `evaluate (App (add, Value (Int 1)))` matches the pattern `Closure ("y", Add (Id "x", Id "y"), [("x", Int 1)])`.
-
-   
-
-   Your solution evaluated incorrectly and produced some part of the following:
-
- 
-   ```
- ;;
-[24mError: This variant expression is expected to have type environment
-       The constructor :: does not belong to type environment
-
-   ```
-
 
 
 ##### ``evaluate - non-recursive functions``
 
-+ Fail: Check that the result of evaluating `evaluate (App ( (App (add, Value (Int 1))), Value (Int 2)))` matches the pattern `Int 3`.
++ Pass: Check that the result of evaluating `evaluate (App (add, Value (Int 1)))` matches the pattern `Closure ("y", Add (Id "x", Id "y"), [("x", Int 1)])`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "Complete this function...".
-`
+
+
+##### ``evaluate - let expressions``
+
++ Pass: Check that the result of evaluating 
+   ```
+evaluate (Let ("x", Value (Int 2), Let ("y", Add (Id "x", Value (Int 4)), Add (Id "x", Id "y"))))
+   ```
+ matches the pattern `Int 8`.
+
+   
+
+
+
++ Pass: Check that the result of evaluating 
+   ```
+evaluate (Let ("add2", Let ("two", Value (Int 2), Lambda ("x", Add (Id "x", Id "two"))), App (Id "add2", Value (Int 4))))
+   ```
+ matches the pattern `Int 6`.
+
+   
+
+
+
+##### ``evaluate - non-recursive functions``
+
++ Pass: Check that the result of evaluating `evaluate (App ( (App (add, Value (Int 1))), Value (Int 2)))` matches the pattern `Int 3`.
+
+   
+
+
 
 ##### ``evaluate - recursive functions``
 
@@ -203,6 +200,10 @@ Exception: Failure "Complete this function...".
 
    Test failed. The following errors were reported:
 ` ;;
-Exception: Failure "Complete this function...".
+Exception: Failure "error in LetRec".
 `
+
+The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
+
+#### Total score: _32_ / _33_
 
