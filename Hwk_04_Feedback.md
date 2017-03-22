@@ -1,6 +1,6 @@
 ### Feedback for Homework 04
 
-Run on March 22, 06:55:35 AM.
+Run on March 22, 07:35:33 AM.
 
 + Pass: Change into directory "Hwk_04".
 
@@ -194,16 +194,13 @@ evaluate (Let ("add2", Let ("two", Value (Int 2), Lambda ("x", Add (Id "x", Id "
 
 ##### ``evaluate - recursive functions``
 
-+ Fail: Check that the result of evaluating `evaluate (App (sumToN_expr, Value (Int 10)))` matches the pattern `Int 55`.
++ Pass: Check that the result of evaluating `evaluate (App (sumToN_expr, Value (Int 10)))` matches the pattern `Int 55`.
 
    
 
-   Test failed. The following errors were reported:
-` ;;
-Exception: Failure "TBD".
-`
+
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
-#### Total score: _32_ / _33_
+#### Total score: _33_ / _33_
 
