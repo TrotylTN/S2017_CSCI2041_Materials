@@ -34,7 +34,7 @@ let rec lookup_env (env: environment) (varname: string) : value =
     if (name = varname)
       then v
       else lookup_env rest varname
-  | [] -> raise (Failure ("id not found"))
+  | [] -> raise (Failure (varname ^ "not in scope"))
 
 let rec eval (env: environment) (e:expr) : value =
   match e with
@@ -42,50 +42,50 @@ let rec eval (env: environment) (e:expr) : value =
       (
         match (eval env e1, eval env e2) with
         | (Int a, Int b) -> Int (a + b)
-        | _ -> raise (Failure ("type error in Add"))
+        | _ -> raise (Failure ("incompatible types on Add"))
       )
     | Sub (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Int a, Int b) -> Int (a - b)
-        | _ -> raise (Failure ("type error in Sub"))
+        | _ -> raise (Failure ("incompatible types on Sub"))
       )
     | Mul (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Int a, Int b) -> Int (a * b)
-        | _ -> raise (Failure ("type error in Mul"))
+        | _ -> raise (Failure ("incompatible types on Mul"))
       )
     | Div (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Int a, Int b) -> Int (a / b)
-        | _ -> raise (Failure ("type error in Div"))
+        | _ -> raise (Failure ("incompatible types on Div"))
       )
     | Lt (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Int a, Int b) -> Bool (a < b)
-        | _ -> raise (Failure ("type error in Lt"))
+        | _ -> raise (Failure ("incompatible types on Lt"))
       )
     | Eq (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Int a, Int b) -> Bool (a = b)
-        | _ -> raise (Failure ("type error in Eq"))
+        | _ -> raise (Failure ("incompatible types on Eq"))
       )
     | And (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Bool a, Bool b) -> Bool (a && b)
-        | _ -> raise (Failure ("type error in And"))
+        | _ -> raise (Failure ("incompatible types on And"))
       )
     | If (e1, e2, e3) ->
       (
         match eval env e1 with
         | Bool true -> eval env e2
         | Bool false -> eval env e3
-        | _ -> raise (Failure ("type error in If"))
+        | _ -> raise (Failure ("incompatible types on If"))
       )
     | Id (id_st) ->
       (
@@ -98,18 +98,19 @@ let rec eval (env: environment) (e:expr) : value =
     | LetRec (fname, e1, e2) ->
       (
         match e1 with
-        | _ -> raise (Failure ("error in LetRec"))
+        | Lambda(temp_id, e1) -> raise (Failure ("TBD"))
+        | _ -> raise(Failure ("let rec expressions must declare a function"))
       )
     | App (e1, e2) ->
       (
         match (eval env e1, eval env e2) with
         | (Closure(t11,t12,t13), Closure (t21,t22,t23)) ->
-            raise (Failure ("double Closure error in App"))
+            raise (Failure ("incompatible types on App"))
         | (Closure(name, localexp, localenv), v) ->
           (
             eval ((name,v)::(localenv @ env)) localexp
           )
-        | _ -> raise (Failure ("error in App"))
+        | _ -> raise (Failure ("incompatible types on App"))
       )
     | Lambda (temp_id, e1) -> Closure(temp_id, e1, env)
     | Value (v) -> v
@@ -117,8 +118,6 @@ let rec eval (env: environment) (e:expr) : value =
 let evaluate (e:expr) : value =
   (* raise (Failure "Complete this function...") *)
   eval [] e
-
-
 
 
 (* Some sample expressions *)
