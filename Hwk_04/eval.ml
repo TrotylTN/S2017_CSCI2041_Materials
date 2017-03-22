@@ -34,7 +34,7 @@ let rec lookup_env (env: environment) (varname: string) : value =
     if (name = varname)
       then v
       else lookup_env rest varname
-  | [] -> raise (Failure (varname ^ "not in scope"))
+  | [] -> raise (Failure (varname ^ " not in scope"))
 
 let rec eval (env: environment) (e:expr) : value =
   match e with
@@ -98,7 +98,10 @@ let rec eval (env: environment) (e:expr) : value =
     | LetRec (fname, e1, e2) ->
       (
         match e1 with
-        | Lambda(temp_id, e1) -> raise (Failure ("TBD"))
+        | Lambda(temp_id, e1) ->
+        (
+          eval ((fname, Closure(temp_id, e1, (fname, Closure(temp_id, e1, env))::env))::env) e2
+        )
         | _ -> raise(Failure ("let rec expressions must declare a function"))
       )
     | App (e1, e2) ->
