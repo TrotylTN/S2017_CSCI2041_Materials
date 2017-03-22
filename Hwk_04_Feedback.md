@@ -1,6 +1,6 @@
 ### Feedback for Homework 04
 
-Run on March 22, 06:32:09 AM.
+Run on March 22, 06:55:35 AM.
 
 + Pass: Change into directory "Hwk_04".
 
@@ -200,7 +200,7 @@ evaluate (Let ("add2", Let ("two", Value (Int 2), Lambda ("x", Add (Id "x", Id "
 
    Test failed. The following errors were reported:
 ` ;;
-Exception: Failure "error in LetRec".
+Exception: Failure "TBD".
 `
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
