@@ -100,7 +100,13 @@ let rec eval (env: environment) (e:expr) : value =
         match e1 with
         | Lambda(temp_id, e1) ->
         (
-          eval ((fname, Closure(temp_id, e1, (fname, Closure(temp_id, e1, env))::env))::env) e2
+          eval (
+                (fname,
+                 Closure(temp_id, e1,
+                         (fname, Closure(temp_id, e1, env))::env
+                        )
+                )::env
+               ) e2
         )
         | _ -> raise(Failure ("let rec expressions must declare a function"))
       )
@@ -119,7 +125,6 @@ let rec eval (env: environment) (e:expr) : value =
     | Value (v) -> v
 
 let evaluate (e:expr) : value =
-  (* raise (Failure "Complete this function...") *)
   eval [] e
 
 
@@ -151,7 +156,9 @@ let sumToN_expr : expr =
 (* let twenty_one : value = evaluate (App (sumToN_expr, Value (Int 6))); *)
 
 let freevars (e_origin: expr) : string list =
-  let rec parse_e (e: expr) (binded: string list) (cur_list: string list) : string list =
+  let rec parse_e (e: expr)
+                  (binded: string list)
+                  (cur_list: string list) : string list =
     match e with
     | Add (e1, e2) ->
       let e1list =
