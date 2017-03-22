@@ -1,6 +1,6 @@
-type environment = None
+type environment = (string * value) list
 
-type expr
+and expr
   = Add of expr * expr
   | Sub of expr * expr
   | Mul of expr * expr
@@ -28,8 +28,95 @@ and value
   | Closure of string * expr * environment
   (* You may need an extra constructor for this type. *)
 
+let rec lookup_env (env: environment) (varname: string) : value =
+  match env with
+  | (name,v)::rest ->
+    if (name = varname)
+      then v
+      else lookup_env rest varname
+  | [] -> raise (Failure ("id not found"))
+
+let rec eval (env: environment) (e:expr) : value =
+  match e with
+    | Add (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Int a, Int b) -> Int (a + b)
+        | _ -> raise (Failure ("type error in Add"))
+      )
+    | Sub (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Int a, Int b) -> Int (a - b)
+        | _ -> raise (Failure ("type error in Sub"))
+      )
+    | Mul (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Int a, Int b) -> Int (a * b)
+        | _ -> raise (Failure ("type error in Mul"))
+      )
+    | Div (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Int a, Int b) -> Int (a / b)
+        | _ -> raise (Failure ("type error in Div"))
+      )
+    | Lt (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Int a, Int b) -> Bool (a < b)
+        | _ -> raise (Failure ("type error in Lt"))
+      )
+    | Eq (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Int a, Int b) -> Bool (a = b)
+        | _ -> raise (Failure ("type error in Eq"))
+      )
+    | And (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Bool a, Bool b) -> Bool (a && b)
+        | _ -> raise (Failure ("type error in And"))
+      )
+    | If (e1, e2, e3) ->
+      (
+        match eval env e1 with
+        | Bool true -> eval env e2
+        | Bool false -> eval env e3
+        | _ -> raise (Failure ("type error in If"))
+      )
+    | Id (id_st) ->
+      (
+        lookup_env env id_st
+      )
+    | Let (fname, e1, e2) ->
+      (
+        eval ((fname, eval env e1)::env) e2
+      )
+    | LetRec (fname, e1, e2) ->
+      (
+        match e1 with
+        | _ -> raise (Failure ("error in LetRec"))
+      )
+    | App (e1, e2) ->
+      (
+        match (eval env e1, eval env e2) with
+        | (Closure(t11,t12,t13), Closure (t21,t22,t23)) ->
+            raise (Failure ("double Closure error in App"))
+        | (Closure(name, localexp, localenv), v) ->
+          (
+            eval ((name,v)::(localenv @ env)) localexp
+          )
+        | _ -> raise (Failure ("error in App"))
+      )
+    | Lambda (temp_id, e1) -> Closure(temp_id, e1, env)
+    | Value (v) -> v
+
 let evaluate (e:expr) : value =
-  raise (Failure "Complete this function...")
+  (* raise (Failure "Complete this function...") *)
+  eval [] e
 
 
 
@@ -142,3 +229,20 @@ let freevars (e_origin: expr) : string list =
     | Value (v) -> cur_list
   in
     parse_e e_origin [] []
+
+
+(* match e with
+  | Add (e1, e2) ->
+  | Sub (e1, e2) ->
+  | Mul (e1, e2) ->
+  | Div (e1, e2) ->
+  | Lt (e1, e2) ->
+  | Eq (e1, e2) ->
+  | And (e1, e2) ->
+  | If (e1, e2, e3) ->
+  | Id (id_st) ->
+  | Let (fname, e1, e2) ->
+  | LetRec (fname, e1, e2) ->
+  | App (e1, e2) ->
+  | Lambda (temp_id, e1) ->
+  | Value (v) -> *)
