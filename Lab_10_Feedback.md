@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on March 28, 13:56:58 PM.
+Run on March 28, 14:01:40 PM.
 
 + Pass: Change into directory "Lab_10".
 
@@ -39,7 +39,7 @@ Run on March 28, 13:56:58 PM.
 
 
 
-+ Fail: Check that the result of evaluating `str_105_nats` matches the pattern `"1, 2, 3, 4, 5, 6, 7, 8, 9, 10
++ Pass: Check that the result of evaluating `str_105_nats` matches the pattern `"1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
 31, 32, 33, 34, 35, 36, 37, 38, 39, 40
@@ -52,16 +52,6 @@ Run on March 28, 13:56:58 PM.
 101, 102, 103, 104, 105" (* Note that the newline characters do not appear in this sample output.  Markdown does not treat the "backslash n" character as a new line.  Just make sure your output of "print_endline str_105_nats" looks correct and that there are now extra spaces except as part of the "comma and space" separator value passed into your function "separators" *)`.
 
    
-
-   Your solution evaluated incorrectly and produced some part of the following:
-
- 
-   ```
- ;;
-- : string =
-"1,2,3,4,5,6,7,8,9,10\n11,12,13,14,15,16,17,18,19,20\n21,22,23,24,25,26,27,28,29,30\n31,32,33,34,35,36,37,38,39,40\n41,42,43,44,45,46,47,48,49,50\n51,52,53,54,55,56,57,58,59,60\n61,62,63,64,65,66,67,68,69,70\n71,72,73,74,75,76,77,78,79,80\n81,82,83,84,85,86,87,88,89,90\n91,92,93,94,95,96,97,98,99,100\n101,102,103,104,105"
-
-   ```
 
 
 
