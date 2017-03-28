@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on March 28, 12:23:58 PM.
+Run on March 28, 13:00:09 PM.
 
 + Pass: Change into directory "Lab_10".
 
@@ -12,26 +12,16 @@ Run on March 28, 12:23:58 PM.
 
 
 
-+ Fail: Check that the result of evaluating `take 5 (str_from 10)` matches the pattern `["10"; "11"; "12"; "13"; "14"]`.
++ Pass: Check that the result of evaluating `take 5 (str_from 10)` matches the pattern `["10"; "11"; "12"; "13"; "14"]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value str_from
-`
 
 
-+ Fail: Check that the result of evaluating `take 5 str_nats` matches the pattern `["1"; "2"; "3"; "4"; "5"]`.
++ Pass: Check that the result of evaluating `take 5 str_nats` matches the pattern `["1"; "2"; "3"; "4"; "5"]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value str_nats
-`
 
 
 + Fail: Check that the result of evaluating `take 10 (separators 2 "$$")` matches the pattern `["$$"; "$$"; "
