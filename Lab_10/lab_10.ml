@@ -153,7 +153,7 @@ let alternate (s1 : 'a stream) (s2 : 'a stream) :  'a stream =
   in
     alternate_help 0 *)
 
-let ten_per_line = separators 9 ","
+let ten_per_line = separators 9 ", "
 
 let str_105_nats = List.fold_right (fun e rrest -> e ^ rrest)
                                    (take 209 (alternate str_nats ten_per_line))
