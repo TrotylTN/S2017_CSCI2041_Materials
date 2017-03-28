@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on March 28, 13:15:35 PM.
+Run on March 28, 13:56:58 PM.
 
 + Pass: Change into directory "Lab_10".
 
@@ -33,15 +33,10 @@ Run on March 28, 13:15:35 PM.
 
 
 
-+ Fail: Check that the result of evaluating `take 10 (alternate nats (from 100))` matches the pattern `[1; 100; 2; 101; 3; 102; 4; 103; 5; 104]`.
++ Pass: Check that the result of evaluating `take 10 (alternate nats (from 100))` matches the pattern `[1; 100; 2; 101; 3; 102; 4; 103; 5; 104]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value alternate
-`
 
 
 + Fail: Check that the result of evaluating `str_105_nats` matches the pattern `"1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -60,8 +55,13 @@ Run on March 28, 13:15:35 PM.
 
    Your solution evaluated incorrectly and produced some part of the following:
 
- ` ;;
-[24mError: Unbound value str_105_nats
-`
+ 
+   ```
+ ;;
+- : string =
+"1,2,3,4,5,6,7,8,9,10\n11,12,13,14,15,16,17,18,19,20\n21,22,23,24,25,26,27,28,29,30\n31,32,33,34,35,36,37,38,39,40\n41,42,43,44,45,46,47,48,49,50\n51,52,53,54,55,56,57,58,59,60\n61,62,63,64,65,66,67,68,69,70\n71,72,73,74,75,76,77,78,79,80\n81,82,83,84,85,86,87,88,89,90\n91,92,93,94,95,96,97,98,99,100\n101,102,103,104,105"
+
+   ```
+
 
 
