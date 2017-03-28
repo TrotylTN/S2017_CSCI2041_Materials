@@ -105,3 +105,13 @@ let rec sieve s = match s with
   | Cons (x, xs) -> Cons(x, fun () -> sieve (sift x (xs ()) ))
 
 let primes = sieve (from 2)
+
+(* All code above is creitted to Eric Van Wyk *)
+
+(* All following code is wrote by Tiannan Zhou *)
+let rec str_from (n : int) : string stream =
+  Cons ( string_of_int n,
+         fun () -> print_endline ("step " ^ string_of_int (n+1)) ;
+                   str_from (n+1) )
+
+let str_nats = str_from 1
