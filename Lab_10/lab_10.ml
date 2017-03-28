@@ -115,3 +115,15 @@ let rec str_from (n : int) : string stream =
                    str_from (n+1) )
 
 let str_nats = str_from 1
+
+let separators (n : int) (sep : string) : string stream =
+  let rec rep_sep (i : int) (cnt : int): string stream =
+    match i with
+    | 0 -> Cons ( "\n",
+                  fun () -> print_endline ("step " ^ string_of_int (cnt+1)) ;
+                            rep_sep n (cnt + 1))
+    | _ -> Cons ( sep,
+                  fun () -> print_endline ("step " ^ string_of_int (cnt+1)) ;
+                            rep_sep (i - 1) (cnt + 1))
+  in
+    rep_sep n 0
