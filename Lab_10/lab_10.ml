@@ -127,3 +127,34 @@ let separators (n : int) (sep : string) : string stream =
                             rep_sep (i - 1) (cnt + 1))
   in
     rep_sep n 0
+
+let rec alternate s1 s2 =
+  match (s1, s2) with
+  | Cons (h1, t1), Cons (h2,t2) -> Cons (h1 , fun () -> Cons(h2, fun ()-> alternate (t1()) (t2 ())))
+(*
+
+let alternate (s1 : 'a stream) (s2 : 'a stream) :  'a stream =
+  let rec get_last_ele alist =
+    match alist with
+    | [x] -> x
+    | hd::tl -> get_last_ele tl
+    | [ ] -> raise (Failure "empty list")
+  in
+  let rec alternate_help (cnt : int) =
+    if cnt mod 2 = 0
+      then
+        Cons ( get_last_ele (take (cnt / 2 + 1) s1),
+                fun () -> print_endline ("step " ^ string_of_int (cnt+1)) ;
+                          alternate_help (cnt + 1))
+      else
+        Cons ( get_last_ele (take (cnt / 2 + 1) s2),
+                fun () -> print_endline ("step " ^ string_of_int (cnt+1)) ;
+                          alternate_help (cnt + 1))
+  in
+    alternate_help 0 *)
+
+let ten_per_line = separators 9 ","
+
+let str_105_nats = List.fold_right (fun e rrest -> e ^ rrest)
+                                   (take 209 (alternate str_nats ten_per_line))
+                                   ""
