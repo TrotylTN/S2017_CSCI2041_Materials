@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on March 28, 13:00:09 PM.
+Run on March 28, 13:15:35 PM.
 
 + Pass: Change into directory "Lab_10".
 
@@ -24,18 +24,13 @@ Run on March 28, 13:00:09 PM.
 
 
 
-+ Fail: Check that the result of evaluating `take 10 (separators 2 "$$")` matches the pattern `["$$"; "$$"; "
++ Pass: Check that the result of evaluating `take 10 (separators 2 "$$")` matches the pattern `["$$"; "$$"; "
 "; "$$"; "$$"; "
 "; "$$"; "$$"; "
 "; "$$"] (* Note that the newline characters do not appear in this sample output.  Markdown does not treat the "backslash n" character as a new line.  Just make sure your output of "print_endline str_105_nats" looks correct and that there are now extra spaces except as part of the "comma and space" separator value passed into your function "separators" *)`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value separators
-`
 
 
 + Fail: Check that the result of evaluating `take 10 (alternate nats (from 100))` matches the pattern `[1; 100; 2; 101; 3; 102; 4; 103; 5; 104]`.
