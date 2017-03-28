@@ -4,7 +4,7 @@ Below are your scores for Hwk 03
 
 If these scores are different from what you expect, please see the concerned TA to ensure the potential error is fixed.
 
-Run on March 28, 00:35:55 AM.
+Run on March 28, 13:01:13 PM.
 
 + _9_ /  _10_ :  Problem 1. Grader :  _Charles Harper_ 
 
