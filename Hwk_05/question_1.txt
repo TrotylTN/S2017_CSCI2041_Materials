@@ -1,0 +1,21 @@
+Call by value:
+  sum (take 3 (some_squares_from 5 1))
+= sum (take 3 (1 :: some_squares_from 4 2))
+= sum (take 3 (1 :: 4 :: some_squares_from 3 3))
+= sum (take 3 (1 :: 4 :: 9 :: some_squares_from 2 4))
+= sum (take 3 (1 :: 4 :: 9 :: 16 :: some_squares_from 1 5))
+= sum (take 3 (1 :: 4 :: 9 :: 16 :: 25 :: some_squares_from 0 6))
+= sum (take 3 (1 :: 4 :: 9 :: 16 :: 25 :: [ ]))
+= sum (1 :: take 2 (4 :: 9 :: 16 :: 25 :: [ ]))
+= sum (1 :: 4 :: take 1 (9 :: 16 :: 25 :: [ ]))
+= sum (1 :: 4 :: 9 :: take 0 (16 :: 25 :: [ ]))
+= sum (1 :: 4 :: 9 :: [ ])
+= 1 + sum (4 :: 9 :: [ ])
+= 1 + 4 + sum (9 :: [ ])
+= 1 + 4 + 9 + sum [ ]
+= 1 + 4 + 9 + 0
+= 14
+
+Call by name:
+
+Lazy evaluation:
