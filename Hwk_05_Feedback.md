@@ -1,6 +1,6 @@
 ## Feedback for Homework 05
 
-Run on March 30, 16:19:07 PM.
+Run on March 30, 16:41:33 PM.
 
 + Pass: Change into directory "Hwk_05".
 
@@ -114,26 +114,16 @@ Run on March 30, 16:19:07 PM.
 
 ##### square root approximations
 
-+ Fail: Check that the result of evaluating `head (sqrt_approximations 49.0)` is within 1.0 of `25.`.
++ Pass: Check that the result of evaluating `head (sqrt_approximations 49.0)` is within 1.0 of `25.`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value sqrt_approximations
-`
 
 
-+ Fail: Check that the result of evaluating `head (drop 4 (sqrt_approximations 49.0))` is within 0.5 of `8.5`.
++ Pass: Check that the result of evaluating `head (drop 4 (sqrt_approximations 49.0))` is within 0.5 of `8.5`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value sqrt_approximations
-`
 
 
 + Fail: Check that the result of evaluating `head diminishing` is within 1.0 of `16.0`.
@@ -195,5 +185,5 @@ Run on March 30, 16:19:07 PM.
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
-#### Total score: _23_ / _30_
+#### Total score: _25_ / _30_
 
