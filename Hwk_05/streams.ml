@@ -147,3 +147,20 @@ let sqrt_approximations (n : float) : float stream =
           Cons(midnum, fun () -> approchfun midnum upb)
   in
     approchfun 1.0 n
+
+let rec epsilon_diff (epsilon: float) (s: float stream) : float =
+  let diff = head s -. head (tail s) in
+  if (diff < epsilon)
+    then
+      head (tail s)
+    else
+      epsilon_diff epsilon (tail s)
+
+let rec divtwo (n: float) : float stream =
+  Cons(n, fun () -> divtwo (n /. 2.0))
+
+let diminishing = divtwo 16.0
+
+let rough_guess = epsilon_diff 1.0 (sqrt_approximations 50.0)
+
+let precise_calculation = epsilon_diff 0.00001 (sqrt_approximations 50.0) 
