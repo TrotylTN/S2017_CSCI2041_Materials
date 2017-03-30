@@ -123,6 +123,16 @@ let rec drop (n : int) (s: 'a stream) : 'a stream =
 let rec drop_until (f: 'a -> bool) (s: 'a stream) : 'a stream =
   if (f (head s) )
     then
-      s      
+      s
     else
       drop_until f (tail s)
+
+
+let rec map (f: 'a -> 'b) (s: 'a stream) : 'b stream =
+  match s with
+  | Cons (hd, tl) ->
+      let rest = (fun () -> map f (tl ()))
+      in
+        Cons (f hd, rest)
+
+let squares_again = map (fun a -> a * a) nats
