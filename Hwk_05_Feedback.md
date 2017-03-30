@@ -1,6 +1,6 @@
 ## Feedback for Homework 05
 
-Run on March 30, 16:41:33 PM.
+Run on March 30, 16:59:44 PM.
 
 + Pass: Change into directory "Hwk_05".
 
@@ -126,37 +126,22 @@ Run on March 30, 16:41:33 PM.
 
 
 
-+ Fail: Check that the result of evaluating `head diminishing` is within 1.0 of `16.0`.
++ Pass: Check that the result of evaluating `head diminishing` is within 1.0 of `16.0`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value diminishing
-`
 
 
-+ Fail: Check that the result of evaluating `head (drop 6 diminishing)` is within 0.05 of `0.25`.
++ Pass: Check that the result of evaluating `head (drop 6 diminishing)` is within 0.05 of `0.25`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value diminishing
-`
 
 
-+ Fail: Check that the result of evaluating `epsilon_diff 0.3 diminishing` is within 0.3 of `0.25`.
++ Pass: Check that the result of evaluating `epsilon_diff 0.3 diminishing` is within 0.3 of `0.25`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value epsilon_diff
-`
 
 
 + Fail: Check that the result of evaluating `precise_calculation` is within 0.05 of `7.07`.
@@ -166,7 +151,7 @@ Run on March 30, 16:41:33 PM.
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound value precise_calculation
+- : float = 5.59375
 `
 
 
@@ -185,5 +170,5 @@ Run on March 30, 16:41:33 PM.
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
-#### Total score: _25_ / _30_
+#### Total score: _28_ / _30_
 
