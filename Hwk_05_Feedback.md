@@ -1,6 +1,6 @@
 ## Feedback for Homework 05
 
-Run on March 30, 16:59:44 PM.
+Run on March 30, 17:09:56 PM.
 
 + Pass: Change into directory "Hwk_05".
 
@@ -144,15 +144,10 @@ Run on March 30, 16:59:44 PM.
 
 
 
-+ Fail: Check that the result of evaluating `precise_calculation` is within 0.05 of `7.07`.
++ Pass: Check that the result of evaluating `precise_calculation` is within 0.05 of `7.07`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-- : float = 5.59375
-`
 
 
 ##### another square root approximation
@@ -170,5 +165,5 @@ Run on March 30, 16:59:44 PM.
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
-#### Total score: _28_ / _30_
+#### Total score: _29_ / _30_
 
