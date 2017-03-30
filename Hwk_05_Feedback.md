@@ -1,6 +1,6 @@
 ## Feedback for Homework 05
 
-Run on March 30, 15:45:02 PM.
+Run on March 30, 16:06:15 PM.
 
 + Pass: Change into directory "Hwk_05".
 
@@ -58,50 +58,30 @@ Run on March 30, 15:45:02 PM.
 
 ##### ``drop``
 
-+ Fail: Check that the result of evaluating `head ( drop 3 nats )` matches the pattern `4`.
++ Pass: Check that the result of evaluating `head ( drop 3 nats )` matches the pattern `4`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value drop
-`
 
 
-+ Fail: Check that the result of evaluating `take 2 ( drop 3 ( squares ) )` matches the pattern `[ 16; 25 ]`.
++ Pass: Check that the result of evaluating `take 2 ( drop 3 ( squares ) )` matches the pattern `[ 16; 25 ]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value drop
-`
 
 
 ##### ``drop_until``
 
-+ Fail: Check that the result of evaluating `head (drop_until (fun v -> v > 35) squares)` matches the pattern `36`.
++ Pass: Check that the result of evaluating `head (drop_until (fun v -> v > 35) squares)` matches the pattern `36`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value drop_until
-`
 
 
-+ Fail: Check that the result of evaluating `take 3 (drop_until (fun x -> x > 10) nats)` matches the pattern `[11; 12; 13]`.
++ Pass: Check that the result of evaluating `take 3 (drop_until (fun x -> x > 10) nats)` matches the pattern `[11; 12; 13]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value drop_until
-`
 
 
 ##### ``map``
@@ -174,7 +154,7 @@ Hint: Did you mean max?
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound value drop
+[24mError: Unbound value sqrt_approximations
 `
 
 
@@ -196,7 +176,7 @@ Hint: Did you mean max?
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound value drop
+[24mError: Unbound value diminishing
 `
 
 
@@ -237,5 +217,5 @@ Hint: Did you mean max?
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
-#### Total score: _15_ / _30_
+#### Total score: _19_ / _30_
 
