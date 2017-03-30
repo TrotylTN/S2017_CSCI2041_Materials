@@ -136,3 +136,14 @@ let rec map (f: 'a -> 'b) (s: 'a stream) : 'b stream =
         Cons (f hd, rest)
 
 let squares_again = map (fun a -> a * a) nats
+
+let sqrt_approximations (n : float) : float stream =
+  let rec approchfun lowb upb =
+    let midnum = (lowb +. upb) /. 2. in
+      if midnum *. midnum > n
+        then
+          Cons(midnum, fun () -> approchfun lowb midnum)
+        else
+          Cons(midnum, fun () -> approchfun midnum upb)
+  in
+    approchfun 1.0 n
