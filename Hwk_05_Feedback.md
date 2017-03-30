@@ -1,6 +1,6 @@
 ## Feedback for Homework 05
 
-Run on March 30, 16:06:15 PM.
+Run on March 30, 16:19:07 PM.
 
 + Pass: Change into directory "Hwk_05".
 
@@ -86,52 +86,30 @@ Run on March 30, 16:06:15 PM.
 
 ##### ``map``
 
-+ Fail: Check that the result of evaluating `head (map (fun x -> x mod 2 = 0) nats)` matches the pattern `false`.
++ Pass: Check that the result of evaluating `head (map (fun x -> x mod 2 = 0) nats)` matches the pattern `false`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value map
-Hint: Did you mean max?
-`
 
 
-+ Fail: Check that the result of evaluating `take 4 (map (fun x -> x mod 2 = 0) nats)` matches the pattern `[false; true; false; true]`.
++ Pass: Check that the result of evaluating `take 4 (map (fun x -> x mod 2 = 0) nats)` matches the pattern `[false; true; false; true]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value map
-Hint: Did you mean max?
-`
 
 
 ##### ``squares_again``
 
-+ Fail: Check that the result of evaluating `head squares_again` matches the pattern `1`.
++ Pass: Check that the result of evaluating `head squares_again` matches the pattern `1`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value squares_again
-`
 
 
-+ Fail: Check that the result of evaluating `take 5 squares_again` matches the pattern `[1; 4; 9; 16; 25]`.
++ Pass: Check that the result of evaluating `take 5 squares_again` matches the pattern `[1; 4; 9; 16; 25]`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value squares_again
-`
 
 
 ##### square root approximations
@@ -217,5 +195,5 @@ Hint: Did you mean max?
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
-#### Total score: _19_ / _30_
+#### Total score: _23_ / _30_
 
