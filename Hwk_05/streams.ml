@@ -152,6 +152,7 @@ let rec epsilon_diff (epsilon: float) (s: float stream) : float =
   let diff = head s -. head (tail s) in
   if (diff < epsilon && diff > epsilon *. -1.0)
     then
+
       head (tail s)
     else
       epsilon_diff epsilon (tail s)
