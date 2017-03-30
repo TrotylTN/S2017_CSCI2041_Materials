@@ -164,3 +164,6 @@ let diminishing = divtwo 16.0
 let rough_guess = epsilon_diff 1.0 (sqrt_approximations 50.0)
 
 let precise_calculation = epsilon_diff 0.00001 (sqrt_approximations 50.0)
+
+let sqrt_threshold (n : float) (err : float) : float =
+  head (filter (fun i -> (i *. i -. n < err) && (i *. i -. n > err *. -1.0) ) (sqrt_approximations n))
