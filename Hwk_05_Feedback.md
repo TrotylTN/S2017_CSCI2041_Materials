@@ -1,6 +1,6 @@
 ## Feedback for Homework 05
 
-Run on March 27, 21:34:36 PM.
+Run on March 29, 19:26:54 PM.
 
 + Pass: Change into directory "Hwk_05".
 
@@ -114,37 +114,37 @@ Run on March 27, 21:34:36 PM.
 
 ##### square root approximations
 
-+ Skip: Check that the result of evaluating `head (sqrt_approximations 49.0)` matches the pattern `25.`.
++ Skip: Check that the result of evaluating `head (sqrt_approximations 49.0)` is within 1.0 of `25.`.
 
    
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Check that the result of evaluating `head (drop 4 (sqrt_approximations 49.0))` matches the pattern `8.5`.
++ Skip: Check that the result of evaluating `head (drop 4 (sqrt_approximations 49.0))` is within 0.5 of `8.5`.
 
    
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Check that the result of evaluating `head diminishing` matches the pattern `16.0`.
++ Skip: Check that the result of evaluating `head diminishing` is within 1.0 of `16.0`.
 
    
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Check that the result of evaluating `head (drop 6 diminishing)` matches the pattern `0.25`.
++ Skip: Check that the result of evaluating `head (drop 6 diminishing)` is within 0.05 of `0.25`.
 
    
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Check that the result of evaluating `epsilon_diff 0.3 diminishing` matches the pattern `0.25`.
++ Skip: Check that the result of evaluating `epsilon_diff 0.3 diminishing` is within 0.3 of `0.25`.
 
    
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Check that the result of evaluating `precise_calculation` matches the pattern `7.07`.
++ Skip: Check that the result of evaluating `precise_calculation` is within 0.05 of `7.07`.
 
    
 
@@ -152,7 +152,7 @@ Run on March 27, 21:34:36 PM.
 
 ##### another square root approximation
 
-+ Skip: Check that the result of evaluating `sqrt_threshold 50.0 3.0` matches the pattern `7.12`.
++ Skip: Check that the result of evaluating `sqrt_threshold 50.0 3.0` is within 0.5 of `7.12`.
 
    
 
