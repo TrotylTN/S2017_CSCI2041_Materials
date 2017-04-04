@@ -199,7 +199,26 @@ let program_3 =
    )
    )
 
-let val_sum_evens = 56
-let val_sum_odds = 49
-let num_sum_evens = 9
-let num_sum_odds = 8
+let program_3_test =
+  Seq(Assign ("x", Value (Int 12)),
+  Seq(Assign("i", Value(Int 0)),
+  Seq(Assign("sum_evens", Value(Int 0)),
+  Seq(Assign("sum_odds", Value(Int 0)),
+  Seq(While ((Lt (Var "i", Var "x")),
+              Seq(WriteNum(Var "i"),
+              Seq(IfThenElse( Eq(Mod(Var "i", Value (Int 2)), Value (Int 0)),
+                             Assign("sum_evens", Add(Var "sum_evens", Var "i" )),
+                             Assign("sum_odds", Add(Var "sum_odds", Var "i"  ))
+                            ),
+                  Assign ("i", Add (Var "i", Value (Int 1)))
+                 )
+                 )
+            ),
+      Seq(WriteNum(Var "sum_evens"),
+          WriteNum(Var "sum_odds")
+         )
+   )
+   )
+   )
+   )
+   )
