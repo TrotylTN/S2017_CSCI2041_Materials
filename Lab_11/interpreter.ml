@@ -46,7 +46,7 @@ let rec eval (e: expr) (env: environment) : value =
        | Int v1, Int v2 -> Int (v1 / v2)
        | _ -> raise (Failure "incompatible types, Div")
      )
-  | Div (e1, e2) ->
+  | Mod (e1, e2) ->
      ( match eval e1 env, eval e2 env with
        | Int v1, Int v2 -> Int (v1 mod v2)
        | _ -> raise (Failure "incompatible types, Mod")
@@ -155,7 +155,7 @@ let rec exec (s: stmt) (stt: state) : state =
       | Bool false -> exec fbranch stt
     )
 (* The code below is written by Tiannan Zhou *)
-let num_sum = 11
+let num_sums = 11
 
 (* program_3
 
@@ -174,3 +174,32 @@ let num_sum = 11
    write sum_evens;
    write sum_odds
  *)
+
+let program_3 =
+  Seq(ReadNum("x"),
+  Seq(Assign("i", Value(Int 0)),
+  Seq(Assign("sum_evens", Value(Int 0)),
+  Seq(Assign("sum_odds", Value(Int 0)),
+  Seq(While ((Lt (Var "i", Var "x")),
+              Seq(WriteNum(Var "i"),
+              Seq(IfThenElse( Eq(Mod(Var "i", Value (Int 2)), Value (Int 0)),
+                             Assign("sum_evens", Add(Var "sum_evens", Var "i" )),
+                             Assign("sum_odds", Add(Var "sum_odds", Var "i"  ))
+                            ),
+                  Assign ("i", Add (Var "i", Value (Int 1)))
+                 )
+                 )
+            ),
+      Seq(WriteNum(Var "sum_evens"),
+          WriteNum(Var "sum_odds")
+         )
+   )
+   )
+   )
+   )
+   )
+
+let val_sum_evens = 56
+let val_sum_odds = 49
+let num_sum_evens = 9
+let num_sum_odds = 8
