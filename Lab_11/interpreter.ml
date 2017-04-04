@@ -202,6 +202,11 @@ let program_3 =
    )
    )
 
+let val_sum_evens = 56
+let val_sum_odds = 49
+let num_sum_evens = 9
+let num_sum_odds = 8
+
 let program_3_test =
   Seq(Assign ("x", Value (Int 12)),
   Seq(Assign("i", Value(Int 0)),
