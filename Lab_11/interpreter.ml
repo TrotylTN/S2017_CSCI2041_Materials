@@ -2,11 +2,12 @@ type value
   = Int of int
   | Bool of bool
 
-type expr = 
+type expr =
   | Add of expr * expr
   | Mul of expr * expr
   | Sub of expr * expr
   | Div of expr * expr
+  | Mod of expr * expr
 
   | Lt of expr * expr
   | Eq of expr * expr
@@ -18,14 +19,14 @@ type expr =
 type environment = (string * value) list
 
 let rec lookup name env =
-  match env with 
+  match env with
   | [ ] -> raise (Failure ("Name \"" ^ name ^ "\" not found."))
   | (k,v)::rest -> if name = k then v else lookup name rest
 
-let rec eval (e: expr) (env: environment) : value = 
+let rec eval (e: expr) (env: environment) : value =
   match e with
   | Value v -> v
-  | Add (e1, e2) -> 
+  | Add (e1, e2) ->
      ( match eval e1 env, eval e2 env with
        | Int v1, Int v2 -> Int (v1 + v2)
        | _ -> raise (Failure "incompatible types, Add")
@@ -33,7 +34,7 @@ let rec eval (e: expr) (env: environment) : value =
   | Sub (e1, e2) ->
      ( match eval e1 env, eval e2 env with
        | Int v1, Int v2 -> Int (v1 - v2)
-       | _ -> raise (Failure "incompatible types, Sub") 
+       | _ -> raise (Failure "incompatible types, Sub")
     )
   | Mul (e1, e2) ->
      ( match eval e1 env, eval e2 env with
@@ -44,6 +45,11 @@ let rec eval (e: expr) (env: environment) : value =
      ( match eval e1 env, eval e2 env with
        | Int v1, Int v2 -> Int (v1 / v2)
        | _ -> raise (Failure "incompatible types, Div")
+     )
+  | Div (e1, e2) ->
+     ( match eval e1 env, eval e2 env with
+       | Int v1, Int v2 -> Int (v1 mod v2)
+       | _ -> raise (Failure "incompatible types, Mod")
      )
   | Lt (e1, e2) ->
      ( match eval e1 env, eval e2 env with
@@ -67,12 +73,12 @@ let rec eval (e: expr) (env: environment) : value =
 
 type state = environment
 
-type stmt = 
+type stmt =
    | Assign of string * expr
    | While of expr * stmt
    | IfThen of expr * stmt
    | IfThenElse of expr * stmt * stmt
-   | Seq of stmt * stmt 
+   | Seq of stmt * stmt
    | WriteNum of expr
    | ReadNum of string
 
@@ -114,25 +120,6 @@ let program_2 =
         WriteNum (Var "sum")
       ) ) ) )
 
-
-(* program_3
-
-   read x;
-   i = 0;
-   sum_evens = 0;
-   sum_odds = 0;
-   while (i < x) {
-     write i;
-     if i mod 2 = 0 then
-        sum_evens = sum_evens + i;
-     else
-        sum_odds = sum_odds + i;
-     i = i + 1
-   }
-   write sum_evens;
-   write sum_odds
- *)
-
 let rec read_number () =
   print_endline "Enter an integer value:" ;
   try int_of_string (read_line ()) with
@@ -154,12 +141,36 @@ let rec exec (s: stmt) (stt: state) : state =
 
   | ReadNum v -> (v, Int (read_number ())) :: stt
 
-  | While (cond, body) -> 
+  | While (cond, body) ->
      (match eval cond stt with
       | Bool true -> exec (Seq (body, While (cond, body))) stt
                  (* the version in the Sec_10 directory is slighlty
                      different, but achieves the same results. *)
       | Bool false -> stt
      )
+  | IfThenElse (cond, tbranch, fbranch) ->
+    (
+      match (eval cond stt) with
+      | Bool true -> exec tbranch stt
+      | Bool false -> exec fbranch stt
+    )
+(* The code below is written by Tiannan Zhou *)
+let num_sum = 11
 
+(* program_3
 
+   read x;
+   i = 0;
+   sum_evens = 0;
+   sum_odds = 0;
+   while (i < x) {
+     write i;
+     if i mod 2 = 0 then
+        sum_evens = sum_evens + i;
+     else
+        sum_odds = sum_odds + i;
+     i = i + 1
+   }
+   write sum_evens;
+   write sum_odds
+ *)
