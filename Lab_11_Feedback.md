@@ -1,8 +1,8 @@
 ### Feedback for Lab 11
 
-Run on April 04, 13:36:53 PM.
+Run on April 04, 13:46:40 PM.
 
-#### Total score: _5_ / _10_
+#### Total score: _6_ / _10_
 
 + Pass: Change into directory "Lab_11".
 
@@ -70,19 +70,9 @@ Run on April 04, 13:36:53 PM.
 
 
 
-+ Fail: Check that the result of evaluating `lookup "y" (exec program_4 [("x",Int 4)])` matches the pattern `Int 6`.
++ Pass: Check that the result of evaluating `lookup "y" (exec program_4 [("x",Int 4)])` matches the pattern `Int 6`.
 
    
-
-   Your solution evaluated incorrectly and produced some part of the following:
-
- 
-   ```
- ;;
-[24mError: Unbound value program_4
-Hint: Did you mean program_1, program_3 or program_2?
-
-   ```
 
 
 
