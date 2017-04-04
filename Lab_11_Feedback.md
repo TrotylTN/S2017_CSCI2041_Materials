@@ -1,6 +1,6 @@
 ### Feedback for Lab 11
 
-Run on April 04, 10:12:10 AM.
+Run on April 04, 12:55:09 PM.
 
 #### Total score: _3_ / _10_
 
@@ -22,6 +22,7 @@ Run on April 04, 10:12:10 AM.
 
  ` ;;
 [24mError: Unbound value num_sums
+Hint: Did you mean num_sum?
 `
 
 
