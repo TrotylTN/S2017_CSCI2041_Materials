@@ -1,8 +1,8 @@
 ### Feedback for Lab 11
 
-Run on April 04, 12:55:09 PM.
+Run on April 04, 13:34:53 PM.
 
-#### Total score: _3_ / _10_
+#### Total score: _8_ / _10_
 
 + Pass: Change into directory "Lab_11".
 
@@ -14,60 +14,34 @@ Run on April 04, 12:55:09 PM.
 
 
 
-+ Fail: Check that the result of evaluating `num_sums` matches the pattern `11`.
++ Pass: Check that the result of evaluating `num_sums` matches the pattern `11`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value num_sums
-Hint: Did you mean num_sum?
-`
 
 
-+ Fail: Check that the result of evaluating `val_sum_evens` matches the pattern `56`.
++ Pass: Check that the result of evaluating `val_sum_evens` matches the pattern `56`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value val_sum_evens
-`
 
 
-+ Fail: Check that the result of evaluating `val_sum_odds` matches the pattern `49`.
++ Pass: Check that the result of evaluating `val_sum_odds` matches the pattern `49`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value val_sum_odds
-`
 
 
-+ Fail: Check that the result of evaluating `num_sum_evens` matches the pattern `9`.
++ Pass: Check that the result of evaluating `num_sum_evens` matches the pattern `9`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value num_sum_evens
-`
 
 
-+ Fail: Check that the result of evaluating `num_sum_odds` matches the pattern `8`.
++ Pass: Check that the result of evaluating `num_sum_odds` matches the pattern `8`.
 
    
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value num_sum_odds
-`
 
 
 + Fail: Check that the result of evaluating `lookup "sum_evens" (exec program_3_test [])` matches the pattern `Int 30`.
@@ -91,7 +65,7 @@ Hint: Did you mean num_sum?
    ```
  ;;
 [24mError: Unbound value program_4
-Hint: Did you mean program_2 or program_1?
+Hint: Did you mean program_1, program_3 or program_2?
 
    ```
 
