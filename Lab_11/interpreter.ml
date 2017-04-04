@@ -81,6 +81,7 @@ type stmt =
    | Seq of stmt * stmt
    | WriteNum of expr
    | ReadNum of string
+   | Skip
 
 (* x := 1;
    y := x + 2;
@@ -154,6 +155,8 @@ let rec exec (s: stmt) (stt: state) : state =
       | Bool true -> exec tbranch stt
       | Bool false -> exec fbranch stt
     )
+  | IfThen(cond, tbranch) -> (exec (IfThenElse(cond, tbranch, Skip)) stt)
+  | Skip -> stt
 (* The code below is written by Tiannan Zhou *)
 let num_sums = 11
 
@@ -222,3 +225,21 @@ let program_3_test =
    )
    )
    )
+
+let program_4 =
+  Seq(
+    Assign("y", Value(Int 0)),
+    Seq(
+      IfThen(Eq(Mod(Var "x", Value(Int 2)), Value(Int 0)),
+             Assign("y", Add(Var "y", Value(Int 2)))
+            ),
+      Seq(
+        IfThen(Eq(Mod(Var "x", Value(Int 3)), Value(Int 0)),
+               Assign("y", Add(Var "y", Value(Int 3)))
+              ),
+        IfThen(Eq(Mod(Var "x", Value(Int 4)), Value(Int 0)),
+               Assign("y", Add(Var "y", Value(Int 4)))
+              )
+      )
+    )
+  )
