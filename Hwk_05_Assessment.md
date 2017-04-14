@@ -4,7 +4,7 @@ This is the automated grading for homework 5. More grading will be done for the 
 
 #### Total score: _65_ / _65_
 
-Run on April 14, 12:03:05 PM.
+Run on April 14, 14:04:38 PM.
 
 + Pass: Change into directory "Hwk_05".
 
