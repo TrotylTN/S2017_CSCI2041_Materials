@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 12, 12:50:18 PM.
+Run on April 15, 16:01:34 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -206,7 +206,7 @@ Check that the result of evaluating
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound constructor Or
+[24mError: Unbound value is_tautology
 `
 
 
@@ -226,7 +226,7 @@ Check that the result of evaluating
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound constructor Or
+[24mError: Unbound value is_tautology
 `
 
 
@@ -246,7 +246,7 @@ Check that the result of evaluating
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound constructor Or
+[24mError: Unbound value is_tautology
 `
 
 
@@ -266,7 +266,7 @@ Check that the result of evaluating
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound constructor And
+[24mError: Unbound value is_tautology
 `
 
 
@@ -287,7 +287,7 @@ Check that the result of evaluating
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound constructor And
+[24mError: Unbound value is_tautology
 `
 
 
@@ -308,7 +308,7 @@ Check that the result of evaluating
    Your solution evaluated incorrectly and produced some part of the following:
 
  ` ;;
-[24mError: Unbound constructor And
+[24mError: Unbound value is_tautology
 `
 
 
@@ -325,8 +325,10 @@ Check that the result of evaluating
 + Skip: 
 Check that the result of evaluating
    ```
-   (maze () = Some [ (2,3); (1,3); (1,2); (2,2); (3,2); (3,3); (3,4); (4,4); (4,5); (3,5) ] ) || 
-   (maze () = Some [ (2,3); (1,3); (1,2); (2,2); (3,2); (3,3); (4,3); (5,3); (5,2); (5,1) ] )
+   (maze () = Some [ (2,3); (1,3); (1,2); (2,2); (3,2); (3,3); (3,4); (4,4); (4,5); (3,5) ]) ||
+   (maze () = Some [ (2,3); (1,3); (1,2); (2,2); (3,2); (3,3); (4,3); (5,3); (5,2); (5,1) ]) ||
+   (maze () = Some [ (2,3); (1,3); (1,4); (1,5); (2,5); (2,4); (3,4); (3,3); (4,3); (5,3); (5,2); (5,1) ]) ||
+   (maze () = Some [ (2,3); (1,3); (1,4); (1,5); (2,5); (2,4); (3,4); (4,4); (4,5); (3,5) ])
    ```
    matches the pattern `true`.
 
