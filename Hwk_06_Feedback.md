@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 16, 17:02:57 PM.
+Run on April 16, 17:17:45 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -90,7 +90,7 @@ Check that the result of evaluating
 
 ##### ``freevars``
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    List.exists ( (=) "P" ) (freevars (And (Prop "P", Prop "Q")))
@@ -100,14 +100,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value freevars
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    List.exists ( (=) "Q" ) (freevars (Or (Prop "P", Prop "Q")))
@@ -117,14 +112,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value freevars
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    List.length (freevars (And ( Prop "P", Or (Prop "Q", Prop "P"))))
@@ -134,14 +124,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value freevars
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    freevars (And (True, False))
@@ -151,11 +136,6 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value freevars
-`
 
 
 ##### ``is_tautology``
@@ -307,7 +287,7 @@ Check that the result of evaluating
 
   This test was not run because of an earlier failing test.
 
-#### Total score: _6_ / _17_
+#### Total score: _10_ / _17_
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
