@@ -65,3 +65,39 @@ let rec freevars (f: formula) : string list =
 	| Not(ff) -> dedup(freevars ff)
 	| Prop(str1) ->	[str1]
 	| _ -> [ ]
+
+let is_tautology (f: formula) (stoso: subst -> subst option): subst option =
+	let rec gen_subst (slist: string list) : subst list =
+		match slist with
+		| x::tl -> (List.map (fun a -> (x, true)::a) (gen_subst tl)) @
+							 (List.map (fun a -> (x, false)::a) (gen_subst tl))
+		| [ ] -> [[]]
+	in
+	let freevarlist = freevars f
+	in
+	let all_situ = gen_subst freevarlist
+	in
+	let rec check_all (situ_list: subst list) : subst option =
+		match situ_list with
+		| sb::tl ->
+		(
+			if (eval f sb)
+				then
+					check_all tl
+				else
+					try
+						stoso sb
+					with
+					| KeepLooking -> check_all tl
+		)
+		| [ ] -> None
+	in
+		check_all all_situ
+
+let is_tautology_first f = is_tautology f (fun s -> Some s)
+
+let is_tautology_print_all f =
+  is_tautology
+    f
+    (fun s -> print_endline (show_subst s);
+	      raise KeepLooking)
