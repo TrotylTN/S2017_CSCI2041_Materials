@@ -34,21 +34,34 @@ let dedup lst =
     if is_elem elem to_keep then to_keep else elem::to_keep
   in List.fold_right f lst []
 
-let rec lookup_subst (a: string) (s: subst) : bool =
+let rec lookup_subst (a: string) (s: subst) : bool option=
 	match s with
 	| (key, b)::tl ->
 	(
 		if (a = key)
-			then b
+			then Some b
 			else lookup_subst a tl
 	)
-	| [] -> raise KeepLooking
+	| [] -> None
 
 let rec eval (f: formula) (s: subst) : bool =
 	match f with
 	| And(f1, f2) -> (eval f1 s) && (eval f2 s)
 	| Or(f1, f2) -> (eval f1 s) || (eval f2 s)
 	| Not(ff) -> not(eval ff s)
-	| Prop(str1) -> lookup_subst str1 s
+	| Prop(str1) ->
+	(
+		match (lookup_subst str1 s) with
+		| Some b -> b
+		| None -> raise KeepLooking
+	)
 	| True -> true
 	| False -> false
+
+let rec freevars (f: formula) : string list =
+	match f with
+	| And(f1, f2) -> dedup((freevars f1) @ (freevars f2))
+	| Or(f1, f2) -> dedup((freevars f1) @ (freevars f2))
+	| Not(ff) -> dedup(freevars ff)
+	| Prop(str1) ->	[str1]
+	| _ -> [ ]
