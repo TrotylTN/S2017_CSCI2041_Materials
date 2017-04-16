@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 16, 17:17:45 PM.
+Run on April 16, 18:56:02 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -140,7 +140,7 @@ Check that the result of evaluating
 
 ##### ``is_tautology``
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    let f = Or (Prop "P", Not (Prop "P")) in
@@ -153,14 +153,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value is_tautology
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    let f = Or (Or (Not (Prop "P"), Prop "Q"), Or (Not (Prop "Q"), Prop "P")) in
@@ -173,14 +168,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value is_tautology
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    let f = Or (Prop "P", Prop "Q") in
@@ -193,14 +183,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value is_tautology
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    let f = And (Prop "P", Prop "Q") in
@@ -213,14 +198,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value is_tautology
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    let f = And (Prop "P", Prop "Q") in
@@ -234,14 +214,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value is_tautology
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    let f = And (Not (Prop "P"), Or (Prop "Q", Prop "P")) in
@@ -255,11 +230,6 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value is_tautology
-`
 
 
 #### Feedback for ``maze.ml``
@@ -287,7 +257,7 @@ Check that the result of evaluating
 
   This test was not run because of an earlier failing test.
 
-#### Total score: _10_ / _17_
+#### Total score: _16_ / _17_
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
