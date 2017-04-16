@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 15, 16:01:34 PM.
+Run on April 16, 17:02:57 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -16,7 +16,7 @@ Run on April 15, 16:01:34 PM.
 
 ##### ``eval``
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    eval (And ( Prop "P", Prop "Q")) [("P",true); ("Q",false)]
@@ -26,14 +26,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value eval
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    eval (And ( Prop "P", Prop "Q")) [("P",true); ("Q",true)]
@@ -43,14 +38,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value eval
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    eval (Or (Prop "P", Or (Prop "Q", Prop "R"))) [("P",false); ("Q",false); ("R",false)]
@@ -60,14 +50,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value eval
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    eval (Or (Prop "P", Or (Prop "Q", Prop "R"))) [("P",false); ("Q",false); ("R",true)]
@@ -77,14 +62,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value eval
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    eval (Or (Prop "P", Or (Prop "Q", Not (Prop "R")))) [("P",false); ("Q",false); ("R",true)]
@@ -94,14 +74,9 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value eval
-`
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    eval (Or (Prop "P", Or (Prop "Q", Not (Prop "R")))) [("P",false); ("Q",false); ("R",false)]
@@ -111,11 +86,6 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- ` ;;
-[24mError: Unbound value eval
-`
 
 
 ##### ``freevars``
@@ -337,7 +307,7 @@ Check that the result of evaluating
 
   This test was not run because of an earlier failing test.
 
-#### Total score: _0_ / _17_
+#### Total score: _6_ / _17_
 
 The total score is used only to count the number of tests passed.  Actual point value for individual tests will change for assessment.
 
