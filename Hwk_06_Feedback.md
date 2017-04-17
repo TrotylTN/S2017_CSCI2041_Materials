@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 16, 18:56:02 PM.
+Run on April 16, 20:11:09 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -234,15 +234,15 @@ Check that the result of evaluating
 
 #### Feedback for ``maze.ml``
 
-+ Fail: Check that file "maze.ml" exists.
++ Pass: Check that file "maze.ml" exists.
 
-     "maze.ml" not found.
++ Pass: Check that an OCaml file "maze.ml" has no syntax or type errors.
 
-+ Skip: Check that an OCaml file "maze.ml" has no syntax or type errors.
+    OCaml file "maze.ml" has no syntax or type errors.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: 
+
++ Fail: 
 Check that the result of evaluating
    ```
    (maze () = Some [ (2,3); (1,3); (1,2); (2,2); (3,2); (3,3); (3,4); (4,4); (4,5); (3,5) ]) ||
@@ -255,7 +255,12 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
+   Your solution evaluated incorrectly and produced some part of the following:
+
+ ` ;;
+[24mError: Unbound value maze
+`
+
 
 #### Total score: _16_ / _17_
 
