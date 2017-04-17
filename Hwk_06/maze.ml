@@ -64,6 +64,4 @@ let rec search_route (x,y) (past_route: loc list) : loc list option =
 exception NotFound
 
 let maze (a: unit) : loc list =
-  match search_route (2,3) [(2,3)] with
-  | Some route -> route
-  | None -> raise NotFound
+  search_route (2,3) [(2,3)]
