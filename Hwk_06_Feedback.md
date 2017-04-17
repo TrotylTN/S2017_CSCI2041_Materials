@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 16, 22:41:57 PM.
+Run on April 16, 22:46:08 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -236,13 +236,15 @@ Check that the result of evaluating
 
 + Pass: Check that file "maze.ml" exists.
 
-+ Pass: Check that an OCaml file "maze.ml" has no syntax or type errors.
++ Fail: Check that an OCaml file "maze.ml" has no syntax or type errors.
 
-    OCaml file "maze.ml" has no syntax or type errors.
+    OCaml file maze.ml has errors.
 
+    Run "ocaml maze.ml" to see them.
 
+    Make sure that you are using ocaml version 4.02.3.  Run "ocaml -version" to check the version number.  Check the specification from Lab 5 again if you are still having problems with this.
 
-+ Fail: 
++ Skip: 
 Check that the result of evaluating
    ```
    (maze () = Some [ (2,3); (1,3); (1,2); (2,2); (3,2); (3,3); (3,4); (4,4); (4,5); (3,5) ]) ||
@@ -255,17 +257,7 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced some part of the following:
-
- 
-   ```
- ;;
-[24mError: This variant expression is expected to have type loc list
-       The constructor Some does not belong to type list
-
-   ```
-
-
+  This test was not run because of an earlier failing test.
 
 #### Total score: _16_ / _17_
 
