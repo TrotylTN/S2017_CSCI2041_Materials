@@ -1,6 +1,6 @@
 ### Feedback for Homework 06
 
-Run on April 16, 20:11:09 PM.
+Run on April 16, 22:41:57 PM.
 
 + Pass: Change into directory "Hwk_06".
 
@@ -257,9 +257,14 @@ Check that the result of evaluating
 
    Your solution evaluated incorrectly and produced some part of the following:
 
- ` ;;
-[24mError: Unbound value maze
-`
+ 
+   ```
+ ;;
+[24mError: This variant expression is expected to have type loc list
+       The constructor Some does not belong to type list
+
+   ```
+
 
 
 #### Total score: _16_ / _17_
