@@ -9,39 +9,39 @@ end
 
 module type Arithmetic_intf = sig
   type vec
-  type base
-  val create: int -> base -> vec
-  val from_list: base list -> vec
-  val to_list: vec -> base list
-  val scalar_add: base -> vec -> vec
-  val scalar_mul: base -> vec -> vec
-  val scalar_prod: vec -> vec -> base option
+  type elemType
+  val create: int -> elemType -> vec
+  val from_list: elemType list -> vec
+  val to_list: vec -> elemType list
+  val scalar_add: elemType -> vec -> vec
+  val scalar_mul: elemType -> vec -> vec
+  val scalar_prod: vec -> vec -> elemType option
   val size: vec -> int
   val to_string: vec -> string
 end
 
 module Make_vector (BaseType: Base_type ) :
-  (Arithmetic_intf with type base := BaseType.t) = struct
+  (Arithmetic_intf with type elemType = BaseType.t) = struct
 
-  type base = BaseType.t
-  type vec = Vec of base list
+  type elemType = BaseType.t
+  type vec = Vec of elemType list
 
-  let create (size: int) (v: base) : vec =
+  let create (size: int) (v: elemType) : vec =
     if size < 0
       then Vec([ ])
       else Vec(BaseType.listlize size v)
 
-  let from_list (base_list: base list) : vec = Vec(base_list)
+  let from_list (base_list: elemType list) : vec = Vec(base_list)
 
-  let to_list (avec: vec) : base list =
+  let to_list (avec: vec) : elemType list =
     match avec with
     | Vec(base_list) -> base_list
 
-  let scalar_add (b: base) (v: vec) : vec =
+  let scalar_add (b: elemType) (v: vec) : vec =
     match v with
     | Vec(alist) -> Vec(List.map (BaseType.add b) alist)
 
-  let scalar_mul (b: base) (v: vec) : vec =
+  let scalar_mul (b: elemType) (v: vec) : vec =
     match v with
     | Vec(alist) -> Vec(List.map (BaseType.mul b) alist)
 
@@ -49,7 +49,7 @@ module Make_vector (BaseType: Base_type ) :
   match v with
   | Vec(alist) -> List.length alist
 
-  let scalar_prod (v1: vec) (v2: vec) : base option =
+  let scalar_prod (v1: vec) (v2: vec) : elemType option =
     if size v1 != size v2
       then None
       else match (v1, v2) with
@@ -84,7 +84,7 @@ module Int_arithmetic : (Base_type with type t = int) = struct
 
   let to_string = string_of_int
 
-  let rec dot l1 l2 =
+  let rec dot (l1: int list) (l2: int list) : int =
     match l1, l2 with
     | hd1::tl1, hd2::tl2 -> hd1 * hd2 + dot tl1 tl2
     | _, _ -> 0
@@ -92,13 +92,35 @@ module Int_arithmetic : (Base_type with type t = int) = struct
 end
 
 
-(* module Complex_arithmetic : (Base_type with type t = float * float) = struct
+module Complex_arithmetic : (Base_type with type t = float * float) = struct
+  type t = float * float
 
-end *)
+  let add (a: float * float) (b: float * float) : float * float =
+    match (a, b) with
+    | ((a, b), (c, d)) -> (a +. c, b +. d)
+
+  let mul (a: float * float) (b: float * float) : float * float =
+    match (a, b) with
+    | ((a, b), (c, d)) -> (a *. c -. b *. d, b *. c +. a *. d)
+
+  let rec listlize (size: int) (v: float * float) : (float * float) list =
+    match size with
+    | 0 -> [ ]
+    | _ -> v :: (listlize (size - 1) v)
+
+  let to_string ((a,b): float * float) : string =
+    "(" ^ (string_of_float a) ^ "+" ^ (string_of_float b) ^ "i)"
+
+  let rec dot (l1: t list) (l2: t list): float * float =
+    match l1, l2 with
+    | hd1::tl1, hd2::tl2 -> add (mul hd1 hd2) (dot tl1 tl2)
+    | _, _ -> (0., 0.)
+
+end
 
 module Int_vector = Make_vector (Int_arithmetic)
 
-(* module Complex_vector = Make_vector (Complex_arithmetic) *)
+module Complex_vector = Make_vector (Complex_arithmetic)
 
 let v1 = Int_vector.create 10 1
 
@@ -121,3 +143,13 @@ let s2 = Int_vector.to_string v2
 let s3 = Int_vector.to_string v3
 
 let s4 = Int_vector.to_string v4
+
+let v5 = Complex_vector.from_list [ (1.0, 2.0); (3.0, 4.0); (5.0, 6.0) ]
+
+let v6 = Complex_vector.scalar_add (5.0, 5.0) v5
+
+let c1 = Complex_vector.scalar_prod v5 v6
+
+let s5 = Complex_vector.to_string v5
+
+let s6 = Complex_vector.to_string v6
