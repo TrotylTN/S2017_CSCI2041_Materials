@@ -1,25 +1,27 @@
 ## Feedback for Homework 07
 
-Run on April 24, 03:01:25 AM.
+Run on April 24, 03:11:59 AM.
 
 + Pass: Change into directory "Hwk_07".
 
 + Pass: Check that file "hwk_07.ml" exists.
 
-+ Fail: Check that it's possible to build and execute an ocaml script using your code.
++ Pass: Check that it's possible to build and execute an ocaml script using your code.
+- Pass: `Int_vector.size (Int_vector.create 10 1)` equivalent to `10`
 
-**Failure to build script! Output follows:**
+- Pass: `Int_vector.to_list (Int_vector.create 10 1)` equivalent to `[1;1;1;1;1;1;1;1;1;1]`
 
-```
-/usr/bin/ocamldep.opt -modules test.ml > test.ml.depends
-/usr/bin/ocamldep.opt -modules hwk_07.ml > hwk_07.ml.depends
-/usr/bin/ocamlc.opt -c -o hwk_07.cmo hwk_07.ml
-+ /usr/bin/ocamlc.opt -c -o hwk_07.cmo hwk_07.ml
-File "hwk_07.ml", line 49, characters 7-11:
-Error: Unbound value size
-Command exited with code 2.
+- Pass: `Int_vector.size (Int_vector.from_list [1;2;3;4;5])` equivalent to `5`
 
-```
+- Pass: `Int_vector.to_list (Int_vector.scalar_add 3 (Int_vector.from_list [1;2;3;4;5]))` equivalent to `[4; 5; 6; 7; 8]`
+
+- Pass: `Int_vector.to_list (Int_vector.scalar_mul 10 (Int_vector.from_list [1;2;3;4;5]))` equivalent to `[10; 20; 30; 40; 50]`
+
+- Pass: `Int_vector.scalar_prod (Int_vector.scalar_add 3 (Int_vector.from_list [1;2;3;4;5])) (Int_vector.scalar_mul 10 (Int_vector.from_list [1;2;3;4;5]))` equivalent to `Some 1000`
+
+
+
+**Total: 6 / 6**
 
 
 
