@@ -19,7 +19,7 @@ let fold_helper : Tgt_lang.func =
          function just returns 0. *)
 
 
-	  
+
       ],
 	(* Below is the value to return, out[0]. *)
         Tgt_lang.ArrayGet
@@ -47,7 +47,7 @@ let rec translate (src: Src_lang.program) : Tgt_lang.program =
 and translate_expr (env: Src_lang.typ_ env) (expr: Src_lang.expr) : Tgt_lang.expr =
   match expr with
   | Src_lang.Array arr -> Tgt_lang.Array (List.map (translate_expr env) arr)
-     
+
   | Src_lang.BinOp (op, l, r) ->
     Tgt_lang.BinOp
       ( op
@@ -103,9 +103,23 @@ and translate_expr (env: Src_lang.typ_ env) (expr: Src_lang.expr) : Tgt_lang.exp
       let array = Tgt_lang.Var "_map_array"
       and index = Tgt_lang.Var "_map_index"
       in
-      raise (Failure "Implement Src_lang.Map in translate_expr!")
+      (* raise (Failure "Implement Src_lang.Map in translate_expr!"); *)
 	(* Write the solution for Map here.  Then remove the above exception. *)
-
+      Tgt_lang.Block (
+        [ Tgt_lang.Decl ("_map_array", Tgt_lang.ArrayType, arr')
+        ; Tgt_lang.For ("_map_index", Tgt_lang.Int 0, Tgt_lang.ArraySize array,
+                        [ Tgt_lang.ArraySet
+                            ( array
+                            , index
+                            , Tgt_lang.Spawn( Tgt_lang.Call
+                              ( func   (* this is and should be func, no need to translate strings *)
+                                  , [ Tgt_lang.ArrayGet (array, index)
+                                    ]
+                              ) )
+                            )
+                        ])
+        ; Tgt_lang.Sync
+        ], Tgt_lang.Var "_map_array")
 
   | Src_lang.Fold (func, arr) ->
     let arr' = translate_expr env arr
