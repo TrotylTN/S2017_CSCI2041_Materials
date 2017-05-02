@@ -17,8 +17,19 @@ let fold_helper : Tgt_lang.func =
 
       (* Add the remainder of this function below. Now this
          function just returns 0. *)
-
-
+        ; Tgt_lang.For ("_map_index", Tgt_lang.Var "start", Tgt_lang.Var "end",
+                        [ Tgt_lang.ArraySet
+                            ( Tgt_lang.Var "out"
+                            , Tgt_lang.Int 0
+                            , Tgt_lang.Spawn( Tgt_lang.Call
+                              ( "f"   (* this is and should be func, no need to translate strings *)
+                                  , [ Tgt_lang.ArrayGet (Tgt_lang.Var "out", Tgt_lang.Int 0);
+                                      Tgt_lang.ArrayGet (Tgt_lang.Var "arr", Tgt_lang.Var "_map_index")
+                                    ]
+                              ) )
+                            )
+                          ; Tgt_lang.Sync
+                        ])
 
       ],
 	(* Below is the value to return, out[0]. *)
